@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -5,24 +14,17 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "brand": {
-          "type": "text",
+        "image_Xwnnrh": {
+          "type": "image",
           "settings": {
-            "heading": "Maison Logos",
-            "subtext": "<p>House of the Word</p>"
-          }
-        },
-        "navigation": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Navigation",
-            "menu": "footer"
+            "image": "shopify://shop_images/maison-logos-preview-dark.jpg",
+            "image_width": 210,
+            "alignment": "center"
           }
         }
       },
       "block_order": [
-        "brand",
-        "navigation"
+        "image_Xwnnrh"
       ],
       "settings": {
         "color_scheme": "scheme-2",
