@@ -1,0 +1,79 @@
+<section class="ml-about-hero">
+  <p class="ml-label">{{ section.settings.label }}</p>
+  <h1>{{ section.settings.heading }}</h1>
+  <span class="ml-gold-rule"></span>
+</section>
+
+<section class="ml-about-body">
+  <div class="page-width">
+    <article class="ml-about-copy rte">
+      {{ page.content }}
+    </article>
+  </div>
+</section>
+
+<section class="ml-about-closing">
+  <h2>{{ section.settings.closing_heading }}</h2>
+  <p class="ml-serif">{{ section.settings.closing_subtitle }}</p>
+  <p>{{ section.settings.domain }}</p>
+  <span class="ml-gold-rule"></span>
+  {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+    <a class="ml-button ml-button--ivory" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Maison about page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "OUR STORY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "House of the Word"
+    },
+    {
+      "type": "text",
+      "id": "closing_heading",
+      "label": "Closing heading",
+      "default": "Maison Logos"
+    },
+    {
+      "type": "text",
+      "id": "closing_subtitle",
+      "label": "Closing subtitle",
+      "default": "House of the Word"
+    },
+    {
+      "type": "text",
+      "id": "domain",
+      "label": "Domain",
+      "default": "maisonlogos.com"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Shop Collection 001"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison about page"
+    }
+  ]
+}
+{% endschema %}

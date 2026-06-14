@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "maison-contact",
+      "settings": {
+        "label": "CONTACT",
+        "heading": "Contact",
+        "text": "For orders, sizing, and private inquiries.",
+        "email": "care@maisonlogos.com"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

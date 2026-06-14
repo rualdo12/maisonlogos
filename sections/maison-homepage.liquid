@@ -1,0 +1,282 @@
+{%- liquid
+  assign featured_collection = section.settings.featured_collection
+  assign archive_collection = section.settings.archive_collection
+  assign first_product = blank
+  assign has_featured_products = false
+  assign archive_has_products = false
+
+  if featured_collection != blank and featured_collection.products.size > 0
+    assign has_featured_products = true
+    assign first_product = featured_collection.products | first
+  endif
+
+  if archive_collection != blank and archive_collection.all_products_count > 0
+    assign archive_has_products = true
+  endif
+
+  assign hero_link = section.settings.hero_button_link | default: routes.all_products_collection_url
+  assign archive_link = section.settings.archive_button_link | default: '/collections/archive'
+-%}
+
+<div class="ml-home">
+  <section class="ml-hero">
+    <div class="ml-hero__media" aria-hidden="true">
+      {%- if section.settings.hero_image != blank -%}
+        {{
+          section.settings.hero_image
+          | image_url: width: 2400
+          | image_tag:
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            class: 'ml-hero__image',
+            fetchpriority: 'high'
+        }}
+      {%- elsif first_product.featured_media != blank -%}
+        {{
+          first_product.featured_media
+          | image_url: width: 2400
+          | image_tag:
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            class: 'ml-hero__image',
+            fetchpriority: 'high'
+        }}
+      {%- endif -%}
+    </div>
+
+    <div class="ml-hero__content">
+      <h1 class="ml-hero__title">{{ section.settings.hero_heading }}</h1>
+      {%- if section.settings.hero_kicker != blank -%}
+        <p class="ml-hero__kicker">{{ section.settings.hero_kicker }}</p>
+      {%- endif -%}
+      {%- if section.settings.hero_button_label != blank -%}
+        <a class="ml-button ml-button--ivory" href="{{ hero_link }}">{{ section.settings.hero_button_label }}</a>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <section class="ml-declaration">
+    <p class="ml-declaration__quote">{{ section.settings.declaration_text }}</p>
+    <span class="ml-gold-rule"></span>
+    <p class="ml-declaration__label">{{ section.settings.declaration_label }}</p>
+  </section>
+
+  <section class="ml-featured">
+    <div class="page-width">
+      <div class="ml-featured__title-wrap">
+        <p class="ml-label">{{ section.settings.featured_label }}</p>
+        {%- if section.settings.featured_heading != blank -%}
+          <h2>{{ section.settings.featured_heading }}</h2>
+        {%- endif -%}
+      </div>
+
+      <ul class="ml-featured__grid grid grid--1-col grid--2-col-tablet grid--2-col-desktop" role="list">
+        {%- if has_featured_products -%}
+          {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
+            {%- assign skip_card_styles = false -%}
+            {%- if forloop.index > 1 -%}
+              {%- assign skip_card_styles = true -%}
+            {%- endif -%}
+            <li class="grid__item">
+              {% render 'card-product',
+                card_product: product,
+                media_aspect_ratio: 'portrait',
+                image_shape: 'default',
+                lazy_load: false,
+                show_secondary_image: false,
+                show_vendor: false,
+                show_rating: false,
+                skip_styles: skip_card_styles,
+                section_id: section.id,
+                quick_add: 'none'
+              %}
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..4) -%}
+            {%- assign skip_card_styles = false -%}
+            {%- if forloop.index > 1 -%}
+              {%- assign skip_card_styles = true -%}
+            {%- endif -%}
+            <li class="grid__item">
+              {%- assign placeholder_image = 'product-apparel-' | append: i -%}
+              {% render 'card-product',
+                media_aspect_ratio: 'portrait',
+                image_shape: 'default',
+                lazy_load: false,
+                placeholder_image: placeholder_image,
+                skip_styles: skip_card_styles,
+                section_id: section.id
+              %}
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+  </section>
+
+  <section class="ml-story">
+    <div class="page-width">
+      <div class="ml-story__inner">
+        <h2 class="ml-story__title">{{ section.settings.story_heading }}</h2>
+        <div class="ml-story__body">
+          {{ section.settings.story_body }}
+          {%- if section.settings.story_link_label != blank and section.settings.story_link != blank -%}
+            <a class="ml-story__link" href="{{ section.settings.story_link }}">
+              {{ section.settings.story_link_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ml-archive">
+    <h2 class="ml-archive__title">{{ section.settings.archive_heading }}</h2>
+    <p class="ml-archive__text">{{ section.settings.archive_text }}</p>
+    {%- if section.settings.show_archive_button and archive_has_products -%}
+      <a class="ml-button ml-button--ivory" href="{{ archive_link }}">{{ section.settings.archive_button_label }}</a>
+    {%- endif -%}
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Maison homepage",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero heading",
+      "default": "House of the Word"
+    },
+    {
+      "type": "text",
+      "id": "hero_kicker",
+      "label": "Hero kicker",
+      "default": "COLLECTION 001 - NOW AVAILABLE"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_label",
+      "label": "Hero button label",
+      "default": "ENTER THE HOUSE"
+    },
+    {
+      "type": "url",
+      "id": "hero_button_link",
+      "label": "Hero button link"
+    },
+    {
+      "type": "text",
+      "id": "declaration_text",
+      "label": "Declaration",
+      "default": "You were made for more than blending in."
+    },
+    {
+      "type": "text",
+      "id": "declaration_label",
+      "label": "Declaration label",
+      "default": "MAISON LOGOS - SACRED LUXURY CLOTHING"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "featured_label",
+      "label": "Featured label",
+      "default": "COLLECTION 001 - THE FOUNDATION"
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Featured heading",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "story_heading",
+      "label": "Story heading",
+      "default": "In the beginning / was the Word."
+    },
+    {
+      "type": "richtext",
+      "id": "story_body",
+      "label": "Story body",
+      "default": "<p>Maison Logos is built for men and women of faith who carry themselves with intentional dignity.</p><p>This is not a Christian T-shirt brand. This is a luxury fashion house built on biblical foundation.</p><p>Premium faith-driven clothing for those who know who they are.</p>"
+    },
+    {
+      "type": "text",
+      "id": "story_link_label",
+      "label": "Story link label",
+      "default": "Read the full story"
+    },
+    {
+      "type": "url",
+      "id": "story_link",
+      "label": "Story link"
+    },
+    {
+      "type": "text",
+      "id": "archive_heading",
+      "label": "Archive heading",
+      "default": "The Archive"
+    },
+    {
+      "type": "text",
+      "id": "archive_text",
+      "label": "Archive text",
+      "default": "Past collections live here. Some things are worth keeping."
+    },
+    {
+      "type": "collection",
+      "id": "archive_collection",
+      "label": "Archive collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_archive_button",
+      "label": "Show archive button when archive has products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "archive_button_label",
+      "label": "Archive button label",
+      "default": "VIEW THE ARCHIVE"
+    },
+    {
+      "type": "url",
+      "id": "archive_button_link",
+      "label": "Archive button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison homepage"
+    }
+  ]
+}
+{% endschema %}

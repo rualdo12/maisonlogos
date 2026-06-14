@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "collection_label": {
+          "type": "text",
+          "settings": {
+            "text": "COLLECTION 001",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title"
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.product_subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price"
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "none"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "meaning": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- assign meaning = product.metafields.custom.meaning.value -%}\n{%- if meaning != blank or product.description != blank -%}\n  <div class=\"ml-product-rule\"></div>\n  <div class=\"ml-product-editorial\">\n    <p class=\"ml-product-heading\">THE MEANING</p>\n    <div class=\"rte\">\n      {%- if meaning != blank -%}\n        {{ product.metafields.custom.meaning | metafield_tag }}\n      {%- else -%}\n        {{ product.description }}\n      {%- endif -%}\n    </div>\n  </div>\n{%- endif -%}"
+          }
+        },
+        "details": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- assign details = product.metafields.custom.details.value -%}\n{%- if details != blank -%}\n  <div class=\"ml-product-editorial\">\n    <p class=\"ml-product-heading\">THE DETAILS</p>\n    <div class=\"rte\">\n      {{ product.metafields.custom.details | metafield_tag }}\n    </div>\n  </div>\n{%- endif -%}"
+          }
+        }
+      },
+      "block_order": [
+        "collection_label",
+        "title",
+        "subtitle",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "meaning",
+        "details"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-2",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

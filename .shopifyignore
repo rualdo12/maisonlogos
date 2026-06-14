@@ -1,0 +1,10 @@
+node_modules/**
+docs/**
+.git/**
+.github/**
+.vscode/**
+package.json
+package-lock.json
+README.md
+release-notes.md
+translation.yml

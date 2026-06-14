@@ -1,0 +1,49 @@
+<section class="ml-contact">
+  <p class="ml-label">{{ section.settings.label }}</p>
+  <h1>{{ page.title | default: section.settings.heading }}</h1>
+  {%- if section.settings.text != blank -%}
+    <p class="ml-archive__text">{{ section.settings.text }}</p>
+  {%- endif -%}
+  {%- if section.settings.email != blank -%}
+    <a class="ml-contact__email" href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Maison contact",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "CONTACT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "For orders, sizing, and private inquiries."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "care@maisonlogos.com"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maison contact"
+    }
+  ]
+}
+{% endschema %}

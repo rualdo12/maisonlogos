@@ -1,0 +1,17 @@
+{
+  "name": "maison-logos-shopify-theme",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Maison Logos Shopify theme built on Dawn.",
+  "scripts": {
+    "dev": "shopify theme dev",
+    "check": "shopify theme check --fail-level error",
+    "push": "shopify theme push",
+    "pull": "shopify theme pull",
+    "package": "shopify theme package"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^4.1.0",
+    "@shopify/theme": "^3.58.2"
+  }
+}

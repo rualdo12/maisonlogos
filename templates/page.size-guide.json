@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "maison-size-guide",
+      "settings": {
+        "label": "SIZE GUIDE",
+        "heading": "Size Guide",
+        "show_default_table": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

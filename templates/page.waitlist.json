@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "maison-waitlist",
+      "settings": {
+        "label": "WAITLIST",
+        "heading": "The next collection will open in its time.",
+        "text": "Leave your email to be notified when the next release is ready.",
+        "placeholder": "Enter your email",
+        "button_label": "Join",
+        "success_message": "You are on the waitlist."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

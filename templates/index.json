@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "maison_homepage": {
+      "type": "maison-homepage",
+      "settings": {
+        "hero_heading": "House of the Word",
+        "hero_kicker": "COLLECTION 001 - NOW AVAILABLE",
+        "hero_button_label": "ENTER THE HOUSE",
+        "hero_button_link": "shopify://collections/all",
+        "declaration_text": "You were made for more than blending in.",
+        "declaration_label": "MAISON LOGOS - SACRED LUXURY CLOTHING",
+        "featured_collection": "all",
+        "products_to_show": 4,
+        "featured_label": "COLLECTION 001 - THE FOUNDATION",
+        "featured_heading": "",
+        "story_heading": "In the beginning / was the Word.",
+        "story_body": "<p>Maison Logos is built for men and women of faith who carry themselves with intentional dignity.</p><p>This is not a Christian T-shirt brand. This is a luxury fashion house built on biblical foundation.</p><p>Premium faith-driven clothing for those who know who they are.</p>",
+        "story_link_label": "Read the full story",
+        "story_link": "shopify://pages/our-story",
+        "archive_heading": "The Archive",
+        "archive_text": "Past collections live here. Some things are worth keeping.",
+        "archive_collection": "archive",
+        "show_archive_button": true,
+        "archive_button_label": "VIEW THE ARCHIVE",
+        "archive_button_link": "shopify://collections/archive"
+      }
+    }
+  },
+  "order": [
+    "maison_homepage"
+  ]
+}
