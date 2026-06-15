@@ -59,7 +59,7 @@
 
   .ai-editorial__gold-heading-{{ ai_gen_id }} {
     color: {{ block.settings.accent_color }};
-    font-family: serif; /* Fallback to theme's serif */
+    font-family: serif;
     font-size: {{ block.settings.heading_size }}px;
     line-height: 1.1;
     margin: 0 0 40px 0;
@@ -131,7 +131,8 @@
     <div class="ai-editorial__visual-{{ ai_gen_id }}">
       <div class="ai-editorial__visual-inner-{{ ai_gen_id }}">
         {% if block.settings.hero_image != blank %}
-          {{ block.settings.hero_image | image_url: width: 1200 | image_tag: class: "ai-editorial__image-" | append: ai_gen_id, loading: 'lazy' }}
+          {% assign img_class = "ai-editorial__image-" | append: ai_gen_id %}
+          {{ block.settings.hero_image | image_url: width: 1200 | image_tag: class: img_class, loading: 'lazy' }}
         {% else %}
           <div style="font-family: serif; font-size: 8vw; color: {{ block.settings.text_color }}; line-height: 1; text-align: center; letter-spacing: 0.05em; word-break: break-word;">
             MAISON<br>LOGOS
