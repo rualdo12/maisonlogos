@@ -583,7 +583,6 @@ button {
   display: none;
 }
 
-.ml-about-hero,
 .ml-page-hero,
 .ml-waitlist,
 .ml-contact,
@@ -594,7 +593,6 @@ button {
   text-align: center;
 }
 
-.ml-about-hero h1,
 .ml-page-hero h1,
 .ml-waitlist h1,
 .ml-contact h1,
@@ -604,14 +602,162 @@ button {
   margin: 1.2rem 0 0;
 }
 
-.ml-page-body,
-.ml-about-body {
+.ml-brand-story {
+  background: var(--ml-ivory);
+  color: var(--ml-near-black);
+}
+
+.ml-brand-story__cover {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-height, 0px));
+  justify-content: center;
+  padding: 9rem 2rem 8rem;
+  text-align: center;
+}
+
+.ml-brand-story__brand,
+.ml-brand-story__label {
+  color: var(--ml-gold);
+  font-family: var(--ml-label-font);
+  font-size: 1.2rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ml-brand-story__cover h1 {
+  color: var(--ml-midnight);
+  font-size: clamp(4.8rem, 8vw, 9.2rem);
+  line-height: 0.95;
+  margin: 1.6rem 0 0;
+  max-width: 82rem;
+}
+
+.ml-brand-story__dash {
+  color: var(--ml-gold);
+  display: block;
+  font-family: var(--ml-serif-font);
+  font-size: 3.8rem;
+  line-height: 1;
+  margin: 2.4rem 0 1.6rem;
+}
+
+.ml-brand-story__subtitle {
+  color: var(--ml-stone);
+  font-family: var(--ml-serif-font);
+  font-size: 2.4rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.ml-brand-story__scripture {
+  color: var(--ml-midnight);
+  font-family: var(--ml-serif-font);
+  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  font-style: italic;
+  line-height: 1.22;
+  margin-top: 6rem;
+}
+
+.ml-brand-story__scripture p {
+  font-family: inherit;
+  margin: 0;
+}
+
+.ml-brand-story__scripture cite {
+  color: var(--ml-gold);
+  display: block;
+  font-family: var(--ml-label-font);
+  font-size: 1.3rem;
+  font-style: normal;
+  margin-top: 2rem;
+  text-transform: uppercase;
+}
+
+.ml-brand-story__body {
+  margin: 0 auto;
+  max-width: 76rem;
+  padding: 2rem 2rem 9rem;
+}
+
+.ml-brand-story__chapter {
+  border-top: 1px solid rgba(201, 168, 76, 0.45);
+  padding: 6.4rem 0 0;
+}
+
+.ml-brand-story__chapter + .ml-brand-story__chapter {
+  margin-top: 6.4rem;
+}
+
+.ml-brand-story__chapter .ml-brand-story__label {
+  text-align: center;
+}
+
+.ml-brand-story__chapter h2 {
+  color: var(--ml-midnight);
+  font-family: var(--ml-serif-font);
+  font-size: clamp(3rem, 4vw, 4.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 1.4rem auto 4rem;
+  max-width: 68rem;
+  text-align: center;
+}
+
+.ml-brand-story__chapter p {
+  color: var(--ml-near-black);
+  font-size: 1.8rem;
+  line-height: 1.85;
+  margin: 0 0 2.4rem;
+}
+
+.ml-brand-story__pull {
+  color: var(--ml-midnight);
+  font-family: var(--ml-serif-font);
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-style: italic;
+  line-height: 1.25;
+  margin: 4.8rem auto;
+  max-width: 68rem;
+  text-align: center;
+}
+
+.ml-brand-story__closing {
+  background: var(--ml-midnight);
+  color: var(--ml-ivory);
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.ml-brand-story__closing h2 {
+  color: var(--ml-ivory);
+  font-size: clamp(4rem, 6vw, 6.2rem);
+  line-height: 1;
+  margin: 0 0 1.2rem;
+}
+
+.ml-brand-story__closing p {
+  color: var(--ml-stone);
+  font-family: var(--ml-label-font);
+  margin: 0.4rem 0;
+  text-transform: uppercase;
+}
+
+.ml-brand-story__closing .ml-serif {
+  color: var(--ml-gold);
+  font-family: var(--ml-serif-font);
+  font-style: italic;
+  text-transform: none;
+}
+
+.ml-page-body {
   background: var(--ml-ivory);
   color: var(--ml-near-black);
   padding: 8rem 0;
 }
 
-.ml-about-copy,
 .ml-page-copy {
   font-size: 1.7rem;
   line-height: 1.75;
@@ -619,7 +765,6 @@ button {
   max-width: 68rem;
 }
 
-.ml-about-copy blockquote,
 .ml-page-copy blockquote {
   border-left: 1px solid var(--ml-gold);
   font-family: var(--ml-serif-font);
@@ -627,24 +772,6 @@ button {
   font-style: italic;
   margin: 4rem 0;
   padding-left: 2.4rem;
-}
-
-.ml-about-closing {
-  background: var(--ml-midnight);
-  color: var(--ml-ivory);
-  padding: 8rem 2rem;
-  text-align: center;
-}
-
-.ml-about-closing h2 {
-  color: var(--ml-ivory);
-  font-size: 4.8rem;
-  margin: 0 0 1.2rem;
-}
-
-.ml-about-closing p {
-  color: var(--ml-stone);
-  margin: 0.4rem 0;
 }
 
 .ml-newsletter-form {
@@ -723,14 +850,13 @@ button {
   .ml-story,
   .ml-archive,
   .ml-page-body,
-  .ml-about-body {
+  .ml-brand-story__body {
     padding-top: 5.6rem;
     padding-bottom: 5.6rem;
   }
 
   .ml-story__title,
   .ml-archive__title,
-  .ml-about-hero h1,
   .ml-page-hero h1,
   .ml-waitlist h1,
   .ml-contact h1,

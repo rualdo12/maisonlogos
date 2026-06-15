@@ -1,26 +1,81 @@
-<section class="ml-about-hero">
-  <p class="ml-label">{{ section.settings.label }}</p>
-  <h1>{{ section.settings.heading }}</h1>
-  <span class="ml-gold-rule"></span>
-</section>
+<article class="ml-brand-story">
+  <header class="ml-brand-story__cover">
+    <p class="ml-brand-story__brand">MAISON LOGOS</p>
+    <h1>House of the Word</h1>
+    <span class="ml-brand-story__dash" aria-hidden="true">&mdash;</span>
+    <p class="ml-brand-story__subtitle">The Brand Story</p>
+    <div class="ml-brand-story__scripture">
+      <p>In the beginning was the Word.</p>
+      <p>And the Word was with God.</p>
+      <p>And the Word was God.</p>
+      <cite>John 1:1</cite>
+    </div>
+  </header>
 
-<section class="ml-about-body">
-  <div class="page-width">
-    <article class="ml-about-copy rte">
-      {{ page.content }}
-    </article>
+  <div class="ml-brand-story__body">
+    <section class="ml-brand-story__chapter">
+      <p class="ml-brand-story__label">I. THE QUESTION</p>
+      <h2>What does your clothing say before you say a word?</h2>
+      <p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you. The cut of what you wear. The weight of the fabric. The restraint of the detail. Whether you carry yourself like someone who knows exactly who they are.</p>
+      <p>Most people dress to fit in. To be acceptable. To not stand out.</p>
+      <p>But there is a different kind of person. One who has settled a question that most people spend their entire lives avoiding.</p>
+      <p class="ml-brand-story__pull">Who does God say I am?</p>
+      <p>When that question is answered &mdash; truly answered, not just recited but lived in the bones &mdash; something changes. The way you walk changes. The way you enter a room changes. The way you carry silence changes.</p>
+      <p>Maison Logos was built for that person.</p>
+    </section>
+
+    <section class="ml-brand-story__chapter">
+      <p class="ml-brand-story__label">II. THE NAME</p>
+      <h2>Maison Logos. House of the Word.</h2>
+      <p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p>
+      <p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p>
+      <p>When God wanted to build something, He spoke first.</p>
+      <p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>
+      <p class="ml-brand-story__pull">You are not an accident.<br>You are not an afterthought.<br>You are a declaration.</p>
+      <p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>
+    </section>
+
+    <section class="ml-brand-story__chapter">
+      <p class="ml-brand-story__label">III. THE STANDARD</p>
+      <h2>Why quality is a form of worship.</h2>
+      <p>We do not believe in cheap.</p>
+      <p>Not because we worship luxury. But because we believe the things we make should honour the Person we build them for.</p>
+      <p>When Solomon built the Temple, he did not use ordinary stone. He used the finest cedar from Lebanon. Gold on the altar. Skilled hands on every joint. Not to impress people &mdash; to honour God.</p>
+      <p>Every piece from Maison Logos is built with that same conviction. The weight of the fabric matters. The precision of the embroidery matters. The fit, the drape, the finish &mdash; all of it matters. Because you matter. And the God who made you is not a God of mediocrity.</p>
+      <p class="ml-brand-story__pull">Excellence is not arrogance.<br>It is gratitude made visible.</p>
+      <p>You will feel the difference the moment you put it on. That is not an accident. It is a standard.</p>
+    </section>
+
+    <section class="ml-brand-story__chapter">
+      <p class="ml-brand-story__label">IV. THE PERSON</p>
+      <h2>This was made for you.</h2>
+      <p>Maison Logos is not for everyone.</p>
+      <p>It is for the person who has been through enough to know that identity is not built on titles, achievements, or the approval of other people. It is for the man who has stood in the fire and come out knowing whose he is. The woman who has stopped shrinking to make other people comfortable. The young person who has decided, quietly and without drama, that they are going to live from a different source.</p>
+      <p>It is for the person who does not need to explain themselves. Who does not need their clothing to start a conversation &mdash; but is not afraid when it does.</p>
+      <p class="ml-brand-story__pull">Worn by those who know who they are.</p>
+      <p>If that is you, you are home.</p>
+    </section>
+
+    <section class="ml-brand-story__chapter">
+      <p class="ml-brand-story__label">V. THE PROMISE</p>
+      <h2>What we commit to you.</h2>
+      <p>Every collection from Maison Logos is released with intention. Not to chase trends. Not to flood the market. One piece at a time. One story at a time. Built slowly, with care, for people who are not in a hurry to be anyone other than themselves.</p>
+      <p>We will never sacrifice quality for volume. We will never chase relevance at the expense of truth. We will build this house the way it was named &mdash; on the Word. Immovable. Unhurried. Eternal.</p>
+      <p>What God builds, lasts.</p>
+      <p>So does what is built in His name.</p>
+    </section>
   </div>
-</section>
 
-<section class="ml-about-closing">
-  <h2>{{ section.settings.closing_heading }}</h2>
-  <p class="ml-serif">{{ section.settings.closing_subtitle }}</p>
-  <p>{{ section.settings.domain }}</p>
-  <span class="ml-gold-rule"></span>
-  {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
-    <a class="ml-button ml-button--ivory" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
-  {%- endif -%}
-</section>
+  <footer class="ml-brand-story__closing">
+    <h2>{{ section.settings.closing_heading }}</h2>
+    <p class="ml-serif">{{ section.settings.closing_subtitle }}</p>
+    <p>{{ section.settings.domain }}</p>
+    {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+      <span class="ml-gold-rule"></span>
+      <a class="ml-button ml-button--ivory" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+    {%- endif -%}
+  </footer>
+</article>
 
 {% schema %}
 {
@@ -28,18 +83,6 @@
   "tag": "section",
   "class": "section",
   "settings": [
-    {
-      "type": "text",
-      "id": "label",
-      "label": "Label",
-      "default": "OUR STORY"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "House of the Word"
-    },
     {
       "type": "text",
       "id": "closing_heading",

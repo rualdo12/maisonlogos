@@ -3,8 +3,6 @@
     "main": {
       "type": "maison-about-page",
       "settings": {
-        "label": "OUR STORY",
-        "heading": "House of the Word",
         "closing_heading": "Maison Logos",
         "closing_subtitle": "House of the Word",
         "domain": "maisonlogos.com",
