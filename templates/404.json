@@ -34,9 +34,49 @@
     },
     "maison_about_page_jUVU73": {
       "type": "maison-about-page",
+      "blocks": {
+        "chapter_aN7Vnf": {
+          "type": "chapter",
+          "settings": {
+            "label": "I. THE QUESTION",
+            "heading": "What does your clothing say before you say a word?",
+            "body": "<p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you.</p>",
+            "pull_quote": "",
+            "body_after_quote": "",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "chapter_aN7Vnf"
+      ],
       "custom_css": [],
       "name": "Maison about page",
       "settings": {
+        "color_scheme": "",
+        "accent_color": "#c9a84c",
+        "muted_color": "#8c7b6b",
+        "chapter_display": "collapsible",
+        "chapter_initial_state": "first_open",
+        "label_text_size": 12,
+        "cover_heading_size": 92,
+        "subtitle_size": 24,
+        "scripture_size": 48,
+        "chapter_heading_size": 42,
+        "body_text_size": 18,
+        "pull_quote_size": 40,
+        "closing_heading_size": 64,
+        "show_cover": true,
+        "brand_label": "MAISON LOGOS",
+        "heading": "House of the Word",
+        "subtitle": "The Brand Story",
+        "show_scripture": true,
+        "scripture_line_1": "In the beginning was the Word.",
+        "scripture_line_2": "And the Word was with God.",
+        "scripture_line_3": "And the Word was God.",
+        "scripture_reference": "John 1:1",
+        "show_closing": true,
+        "closing_color_scheme": "",
         "closing_heading": "Maison Logos",
         "closing_subtitle": "House of the Word",
         "domain": "mainoslogos.online",
