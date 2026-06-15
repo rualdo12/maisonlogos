@@ -1,10 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "image_banner_wxgmVq": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-white-front-6a2e6a1a8c356.jpg",
+        "image_2": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-grey-front-6a2e6a1a8dbc3.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
     "main": {
-      "type": "main-404"
+      "type": "main-404",
+      "disabled": true,
+      "settings": {}
+    },
+    "178146315853377f8e": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_284fdbc_KzgAwk": {
+          "type": "ai_gen_block_284fdbc",
+          "settings": {
+            "heading": "Our Story",
+            "heading_size": 36,
+            "heading_color": "#2c2c2c",
+            "heading_spacing": 32,
+            "content": "<p>Share your brand's journey, values, and what makes you unique. This is your opportunity to connect with customers on a deeper level.</p>",
+            "text_size": 16,
+            "text_alignment": "left",
+            "text_color": "#2c2c2c",
+            "link_color": "#c9a84c",
+            "container_width": 800,
+            "background_color": "#ffffff",
+            "padding_top": 80,
+            "padding_bottom": 80
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_284fdbc_KzgAwk"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "image_banner_wxgmVq",
+    "main",
+    "178146315853377f8e"
   ]
 }
