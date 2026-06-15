@@ -15,7 +15,8 @@
   ----------------------- */
   .ai-gallery-{{ ai_gen_id }} {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Uses the desktop columns setting */
+    grid-template-columns: repeat({{ block.settings.gallery_columns_desktop }}, 1fr);
     gap: {{ block.settings.gallery_gap }}px;
     width: 100%;
     padding: 0;
@@ -23,7 +24,6 @@
 
   .ai-gallery-item-{{ ai_gen_id }} {
     position: relative;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
   }
@@ -31,10 +31,24 @@
   .ai-gallery-img-{{ ai_gen_id }} {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
-    aspect-ratio: 4 / 5;
     background-color: #f4f4f4;
+    border-radius: {{ block.settings.gallery_corner_radius }}px;
+    
+    /* Dynamic Image Fit */
+    object-fit: {{ block.settings.gallery_object_fit }};
+    
+    /* Dynamic Aspect Ratio */
+    {% if block.settings.gallery_aspect_ratio == 'square' %}
+      aspect-ratio: 1 / 1;
+    {% elsif block.settings.gallery_aspect_ratio == 'portrait' %}
+      aspect-ratio: 4 / 5;
+    {% elsif block.settings.gallery_aspect_ratio == 'landscape' %}
+      aspect-ratio: 16 / 9;
+    {% else %}
+      /* Original image ratio */
+      height: auto;
+    {% endif %}
   }
 
   .ai-gallery-caption-{{ ai_gen_id }} {
@@ -116,7 +130,7 @@
       font-size: calc({{ block.settings.text_size }}px * 0.9);
     }
     .ai-gallery-{{ ai_gen_id }} {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* Snaps to 2 columns on mobile */
       gap: 8px;
     }
   }
@@ -129,7 +143,7 @@
     {%- if block.settings.image_1 != blank or block.settings.caption_1 != blank -%}
       <div class="ai-gallery-item-{{ ai_gen_id }}">
         {%- if block.settings.image_1 != blank -%}
-          {{ block.settings.image_1 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+          {{ block.settings.image_1 | image_url: width: 1000 | image_tag: class: "ai-gallery-img-", loading: 'lazy' | replace: 'class="ai-gallery-img-"', 'class="ai-gallery-img-' | append: ai_gen_id | append: '"' }}
         {%- endif -%}
         {%- if block.settings.caption_1 != blank -%}
           <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_1 }}</div>
@@ -140,7 +154,7 @@
     {%- if block.settings.image_2 != blank or block.settings.caption_2 != blank -%}
       <div class="ai-gallery-item-{{ ai_gen_id }}">
         {%- if block.settings.image_2 != blank -%}
-          {{ block.settings.image_2 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+          {{ block.settings.image_2 | image_url: width: 1000 | image_tag: class: "ai-gallery-img-", loading: 'lazy' | replace: 'class="ai-gallery-img-"', 'class="ai-gallery-img-' | append: ai_gen_id | append: '"' }}
         {%- endif -%}
         {%- if block.settings.caption_2 != blank -%}
           <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_2 }}</div>
@@ -151,7 +165,7 @@
     {%- if block.settings.image_3 != blank or block.settings.caption_3 != blank -%}
       <div class="ai-gallery-item-{{ ai_gen_id }}">
         {%- if block.settings.image_3 != blank -%}
-          {{ block.settings.image_3 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+          {{ block.settings.image_3 | image_url: width: 1000 | image_tag: class: "ai-gallery-img-", loading: 'lazy' | replace: 'class="ai-gallery-img-"', 'class="ai-gallery-img-' | append: ai_gen_id | append: '"' }}
         {%- endif -%}
         {%- if block.settings.caption_3 != blank -%}
           <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_3 }}</div>
@@ -162,7 +176,7 @@
     {%- if block.settings.image_4 != blank or block.settings.caption_4 != blank -%}
       <div class="ai-gallery-item-{{ ai_gen_id }}">
         {%- if block.settings.image_4 != blank -%}
-          {{ block.settings.image_4 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+          {{ block.settings.image_4 | image_url: width: 1000 | image_tag: class: "ai-gallery-img-", loading: 'lazy' | replace: 'class="ai-gallery-img-"', 'class="ai-gallery-img-' | append: ai_gen_id | append: '"' }}
         {%- endif -%}
         {%- if block.settings.caption_4 != blank -%}
           <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_4 }}</div>
@@ -284,7 +298,16 @@
     },
     {
       "type": "header",
-      "content": "Gallery Images"
+      "content": "Gallery Adjustments"
+    },
+    {
+      "type": "range",
+      "id": "gallery_columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Desktop columns",
+      "default": 4
     },
     {
       "type": "range",
@@ -295,6 +318,43 @@
       "unit": "px",
       "label": "Image Gap",
       "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gallery_corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Corner Radius",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "gallery_aspect_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "auto", "label": "Adapt to image" },
+        { "value": "portrait", "label": "Portrait (4:5)" },
+        { "value": "square", "label": "Square (1:1)" },
+        { "value": "landscape", "label": "Landscape (16:9)" }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "select",
+      "id": "gallery_object_fit",
+      "label": "Image fill",
+      "options": [
+        { "value": "cover", "label": "Cover (crop to fill)" },
+        { "value": "contain", "label": "Contain (show full image)" }
+      ],
+      "default": "cover",
+      "info": "Only applies if a specific ratio is chosen above."
+    },
+    {
+      "type": "header",
+      "content": "Gallery Images"
     },
     {
       "type": "image_picker",
