@@ -1,10 +1,6 @@
 {%- liquid
   assign story_accent = section.settings.accent_color | default: '#C9A84C'
   assign story_muted = section.settings.muted_color | default: '#8C7B6B'
-  assign chapters_are_collapsible = false
-  if section.settings.chapter_display == 'collapsible'
-    assign chapters_are_collapsible = true
-  endif
 -%}
 
 <article
@@ -12,6 +8,8 @@
   style="
     --ml-story-accent: {{ story_accent }};
     --ml-story-muted: {{ story_muted }};
+    --ml-story-logo-width: {{ section.settings.logo_width }}px;
+    --ml-story-logo-text-size: {{ section.settings.logo_text_size }}px;
     --ml-story-label-size: {{ section.settings.label_text_size }}px;
     --ml-story-cover-heading-size: {{ section.settings.cover_heading_size }}px;
     --ml-story-subtitle-size: {{ section.settings.subtitle_size }}px;
@@ -24,9 +22,22 @@
 >
   {%- if section.settings.show_cover -%}
     <header class="ml-brand-story__cover">
-      {%- if section.settings.brand_label != blank -%}
-        <p class="ml-brand-story__brand">{{ section.settings.brand_label }}</p>
+      {%- if section.settings.logo_image != blank -%}
+        <div class="ml-brand-story__logo">
+          {{
+            section.settings.logo_image
+            | image_url: width: 1400
+            | image_tag:
+              widths: '320, 480, 640, 900, 1200, 1400',
+              sizes: '(min-width: 750px) 640px, 86vw',
+              class: 'ml-brand-story__logo-image',
+              loading: 'eager'
+          }}
+        </div>
+      {%- elsif section.settings.brand_label != blank -%}
+        <p class="ml-brand-story__logo-text">{{ section.settings.brand_label }}</p>
       {%- endif -%}
+
       {%- if section.settings.heading != blank -%}
         <h1>{{ section.settings.heading }}</h1>
       {%- endif -%}
@@ -53,53 +64,22 @@
     </header>
   {%- endif -%}
 
-  <div class="ml-brand-story__body{% if chapters_are_collapsible %} ml-brand-story__body--collapsible{% endif %}">
-    {%- if section.blocks.size > 0 -%}
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'chapter' -%}
-            {%- if chapters_are_collapsible -%}
-              {%- liquid
-                assign chapter_should_open = false
-                if section.settings.chapter_initial_state == 'all_open'
-                  assign chapter_should_open = true
-                elsif section.settings.chapter_initial_state == 'first_open' and forloop.first
-                  assign chapter_should_open = true
-                elsif section.settings.chapter_initial_state == 'custom' and block.settings.open_by_default
-                  assign chapter_should_open = true
-                endif
-              -%}
-              <details
-                class="ml-brand-story__chapter ml-brand-story__chapter--collapsible"
-                {% if chapter_should_open %}
-                  open
-                {% endif %}
-                {{ block.shopify_attributes }}
-              >
-                <summary class="ml-brand-story__summary">
-                  <span>
-                    {%- if block.settings.label != blank -%}
-                      <span class="ml-brand-story__label">{{ block.settings.label }}</span>
-                    {%- endif -%}
-                    {%- if block.settings.heading != blank -%}
-                      <span class="ml-brand-story__summary-title">{{ block.settings.heading }}</span>
-                    {%- endif -%}
-                  </span>
-                  <span class="ml-brand-story__toggle" aria-hidden="true"></span>
-                </summary>
-                <div class="ml-brand-story__chapter-content">
-                  {%- if block.settings.body != blank -%}
-                    <div class="ml-brand-story__text rte">{{ block.settings.body }}</div>
-                  {%- endif -%}
-                  {%- if block.settings.pull_quote != blank -%}
-                    <p class="ml-brand-story__pull">{{ block.settings.pull_quote | newline_to_br }}</p>
-                  {%- endif -%}
-                  {%- if block.settings.body_after_quote != blank -%}
-                    <div class="ml-brand-story__text rte">{{ block.settings.body_after_quote }}</div>
-                  {%- endif -%}
-                </div>
-              </details>
-            {%- else -%}
+  <details
+    class="ml-brand-story__reveal"
+    {% if section.settings.story_open_by_default %}
+      open
+    {% endif %}
+  >
+    <summary class="ml-brand-story__read-trigger">
+      <span class="ml-brand-story__read-label">{{ section.settings.read_label }}</span>
+      <span class="ml-brand-story__read-toggle" aria-hidden="true"></span>
+    </summary>
+
+    <div class="ml-brand-story__body">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'chapter' -%}
               <section class="ml-brand-story__chapter" {{ block.shopify_attributes }}>
                 {%- if block.settings.label != blank -%}
                   <p class="ml-brand-story__label">{{ block.settings.label }}</p>
@@ -117,15 +97,15 @@
                   <div class="ml-brand-story__text rte">{{ block.settings.body_after_quote }}</div>
                 {%- endif -%}
               </section>
-            {%- endif -%}
-        {%- endcase -%}
-      {%- endfor -%}
-    {%- elsif page.content != blank -%}
-      <div class="ml-brand-story__chapter">
-        <div class="ml-brand-story__text rte">{{ page.content }}</div>
-      </div>
-    {%- endif -%}
-  </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      {%- elsif page.content != blank -%}
+        <div class="ml-brand-story__chapter">
+          <div class="ml-brand-story__text rte">{{ page.content }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+  </details>
 
   {%- if section.settings.show_closing -%}
     <footer class="ml-brand-story__closing color-{{ section.settings.closing_color_scheme }} gradient">
@@ -171,48 +151,30 @@
       "default": "#8C7B6B"
     },
     {
-      "type": "select",
-      "id": "chapter_display",
-      "label": "Chapter display",
-      "options": [
-        {
-          "value": "expanded",
-          "label": "Expanded chapters"
-        },
-        {
-          "value": "collapsible",
-          "label": "Collapsible chapters"
-        }
-      ],
-      "default": "collapsible"
+      "type": "checkbox",
+      "id": "story_open_by_default",
+      "label": "Open full story by default",
+      "default": false
     },
     {
-      "type": "select",
-      "id": "chapter_initial_state",
-      "label": "Chapter initial state",
-      "options": [
-        {
-          "value": "first_open",
-          "label": "First chapter open"
-        },
-        {
-          "value": "all_closed",
-          "label": "All chapters closed"
-        },
-        {
-          "value": "all_open",
-          "label": "All chapters open"
-        },
-        {
-          "value": "custom",
-          "label": "Use each chapter setting"
-        }
-      ],
-      "default": "first_open"
+      "type": "text",
+      "id": "read_label",
+      "label": "Read story label",
+      "default": "Read the brand story"
     },
     {
       "type": "header",
       "content": "Text sizes"
+    },
+    {
+      "type": "range",
+      "id": "logo_text_size",
+      "label": "Logo text fallback size",
+      "min": 72,
+      "max": 180,
+      "step": 4,
+      "unit": "px",
+      "default": 132
     },
     {
       "type": "range",
@@ -227,12 +189,12 @@
     {
       "type": "range",
       "id": "cover_heading_size",
-      "label": "Cover heading size",
-      "min": 48,
-      "max": 128,
+      "label": "House of the Word size",
+      "min": 32,
+      "max": 96,
       "step": 4,
       "unit": "px",
-      "default": 92
+      "default": 64
     },
     {
       "type": "range",
@@ -305,9 +267,24 @@
       "default": true
     },
     {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Maison Logos logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo image width",
+      "min": 240,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
       "type": "text",
       "id": "brand_label",
-      "label": "Brand label",
+      "label": "Logo text fallback",
       "default": "MAISON LOGOS"
     },
     {
@@ -430,12 +407,6 @@
           "type": "richtext",
           "id": "body_after_quote",
           "label": "Body after pull quote"
-        },
-        {
-          "type": "checkbox",
-          "id": "open_by_default",
-          "label": "Open by default when collapsible",
-          "default": false
         }
       ]
     }
@@ -451,8 +422,7 @@
             "heading": "What does your clothing say before you say a word?",
             "body": "<p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you. The cut of what you wear. The weight of the fabric. The restraint of the detail. Whether you carry yourself like someone who knows exactly who they are.</p><p>Most people dress to fit in. To be acceptable. To not stand out.</p><p>But there is a different kind of person. One who has settled a question that most people spend their entire lives avoiding.</p>",
             "pull_quote": "Who does God say I am?",
-            "body_after_quote": "<p>When that question is answered &mdash; truly answered, not just recited but lived in the bones &mdash; something changes. The way you walk changes. The way you enter a room changes. The way you carry silence changes.</p><p>Maison Logos was built for that person.</p>",
-            "open_by_default": true
+            "body_after_quote": "<p>When that question is answered &mdash; truly answered, not just recited but lived in the bones &mdash; something changes. The way you walk changes. The way you enter a room changes. The way you carry silence changes.</p><p>Maison Logos was built for that person.</p>"
           }
         },
         {

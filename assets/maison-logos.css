@@ -617,7 +617,29 @@ button {
   text-align: center;
 }
 
-.ml-brand-story__brand,
+.ml-brand-story__logo {
+  margin: 0 auto 2.4rem;
+  max-width: min(88vw, var(--ml-story-logo-width, 620px));
+  width: 100%;
+}
+
+.ml-brand-story__logo-image {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ml-brand-story__logo-text {
+  color: rgb(var(--color-foreground));
+  font-family: var(--ml-heading-font);
+  font-size: clamp(7.2rem, 13vw, var(--ml-story-logo-text-size, 132px));
+  line-height: 0.88;
+  margin: 0 auto 2.4rem;
+  max-width: 92rem;
+  text-transform: uppercase;
+}
+
 .ml-brand-story__label {
   color: var(--ml-story-accent);
   font-family: var(--ml-label-font);
@@ -628,9 +650,9 @@ button {
 
 .ml-brand-story__cover h1 {
   color: rgb(var(--color-foreground));
-  font-size: clamp(4.8rem, 8vw, var(--ml-story-cover-heading-size, 92px));
+  font-size: clamp(3.2rem, 6vw, var(--ml-story-cover-heading-size, 64px));
   line-height: 0.95;
-  margin: 1.6rem 0 0;
+  margin: 0;
   max-width: 82rem;
 }
 
@@ -678,7 +700,7 @@ button {
 .ml-brand-story__body {
   margin: 0 auto;
   max-width: 76rem;
-  padding: 2rem 2rem 9rem;
+  padding: 0 2rem 9rem;
 }
 
 .ml-brand-story__chapter {
@@ -766,40 +788,36 @@ button {
   color: rgb(var(--color-foreground));
 }
 
-.ml-brand-story__chapter--collapsible {
-  padding-top: 0;
+.ml-brand-story__reveal {
+  border-top: 1px solid color-mix(in srgb, var(--ml-story-accent) 55%, transparent);
+  margin: 0 auto;
+  max-width: 96rem;
 }
 
-.ml-brand-story__summary {
+.ml-brand-story__read-trigger {
   align-items: center;
   cursor: pointer;
   display: flex;
   gap: 2.4rem;
   justify-content: space-between;
   list-style: none;
-  padding: 3.2rem 0;
+  margin: 0 auto;
+  max-width: 76rem;
+  padding: 3.6rem 2rem;
 }
 
-.ml-brand-story__summary::-webkit-details-marker {
+.ml-brand-story__read-trigger::-webkit-details-marker {
   display: none;
 }
 
-.ml-brand-story__summary .ml-brand-story__label {
-  display: block;
-  text-align: left;
-}
-
-.ml-brand-story__summary-title {
+.ml-brand-story__read-label {
   color: rgb(var(--color-foreground));
-  display: block;
-  font-family: var(--ml-serif-font);
-  font-size: clamp(2.8rem, 4vw, var(--ml-story-chapter-heading-size, 42px));
-  font-style: italic;
-  line-height: 1.18;
-  margin-top: 0.8rem;
+  font-family: var(--ml-label-font);
+  font-size: var(--ml-story-label-size, 12px);
+  text-transform: uppercase;
 }
 
-.ml-brand-story__toggle {
+.ml-brand-story__read-toggle {
   border: 1px solid var(--ml-story-accent);
   display: grid;
   flex: 0 0 3.6rem;
@@ -809,8 +827,8 @@ button {
   width: 3.6rem;
 }
 
-.ml-brand-story__toggle::before,
-.ml-brand-story__toggle::after {
+.ml-brand-story__read-toggle::before,
+.ml-brand-story__read-toggle::after {
   background: var(--ml-story-accent);
   content: "";
   height: 1px;
@@ -818,17 +836,13 @@ button {
   width: 1.4rem;
 }
 
-.ml-brand-story__toggle::after {
+.ml-brand-story__read-toggle::after {
   transform: rotate(90deg);
   transition: transform 160ms ease;
 }
 
-.ml-brand-story__chapter[open] .ml-brand-story__toggle::after {
+.ml-brand-story__reveal[open] .ml-brand-story__read-toggle::after {
   transform: rotate(0deg);
-}
-
-.ml-brand-story__chapter-content {
-  padding-bottom: 4.8rem;
 }
 
 .ml-page-body {
