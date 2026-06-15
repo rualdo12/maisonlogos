@@ -690,6 +690,10 @@ button {
   margin-top: 6.4rem;
 }
 
+.ml-brand-story__body--collapsible .ml-brand-story__chapter + .ml-brand-story__chapter {
+  margin-top: 0;
+}
+
 .ml-brand-story__chapter .ml-brand-story__label {
   text-align: center;
 }

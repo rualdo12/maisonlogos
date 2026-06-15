@@ -59,9 +59,19 @@
         {%- case block.type -%}
           {%- when 'chapter' -%}
             {%- if chapters_are_collapsible -%}
+              {%- liquid
+                assign chapter_should_open = false
+                if section.settings.chapter_initial_state == 'all_open'
+                  assign chapter_should_open = true
+                elsif section.settings.chapter_initial_state == 'first_open' and forloop.first
+                  assign chapter_should_open = true
+                elsif section.settings.chapter_initial_state == 'custom' and block.settings.open_by_default
+                  assign chapter_should_open = true
+                endif
+              -%}
               <details
                 class="ml-brand-story__chapter ml-brand-story__chapter--collapsible"
-                {% if block.settings.open_by_default %}
+                {% if chapter_should_open %}
                   open
                 {% endif %}
                 {{ block.shopify_attributes }}
@@ -174,7 +184,31 @@
           "label": "Collapsible chapters"
         }
       ],
-      "default": "expanded"
+      "default": "collapsible"
+    },
+    {
+      "type": "select",
+      "id": "chapter_initial_state",
+      "label": "Chapter initial state",
+      "options": [
+        {
+          "value": "first_open",
+          "label": "First chapter open"
+        },
+        {
+          "value": "all_closed",
+          "label": "All chapters closed"
+        },
+        {
+          "value": "all_open",
+          "label": "All chapters open"
+        },
+        {
+          "value": "custom",
+          "label": "Use each chapter setting"
+        }
+      ],
+      "default": "first_open"
     },
     {
       "type": "header",
