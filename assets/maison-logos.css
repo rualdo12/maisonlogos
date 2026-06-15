@@ -603,8 +603,8 @@ button {
 }
 
 .ml-brand-story {
-  background: var(--ml-ivory);
-  color: var(--ml-near-black);
+  background: rgb(var(--color-background));
+  color: rgba(var(--color-foreground), 0.86);
 }
 
 .ml-brand-story__cover {
@@ -619,23 +619,23 @@ button {
 
 .ml-brand-story__brand,
 .ml-brand-story__label {
-  color: var(--ml-gold);
+  color: var(--ml-story-accent);
   font-family: var(--ml-label-font);
-  font-size: 1.2rem;
+  font-size: var(--ml-story-label-size, 12px);
   margin: 0;
   text-transform: uppercase;
 }
 
 .ml-brand-story__cover h1 {
-  color: var(--ml-midnight);
-  font-size: clamp(4.8rem, 8vw, 9.2rem);
+  color: rgb(var(--color-foreground));
+  font-size: clamp(4.8rem, 8vw, var(--ml-story-cover-heading-size, 92px));
   line-height: 0.95;
   margin: 1.6rem 0 0;
   max-width: 82rem;
 }
 
 .ml-brand-story__dash {
-  color: var(--ml-gold);
+  color: var(--ml-story-accent);
   display: block;
   font-family: var(--ml-serif-font);
   font-size: 3.8rem;
@@ -644,17 +644,17 @@ button {
 }
 
 .ml-brand-story__subtitle {
-  color: var(--ml-stone);
+  color: var(--ml-story-muted);
   font-family: var(--ml-serif-font);
-  font-size: 2.4rem;
+  font-size: var(--ml-story-subtitle-size, 24px);
   font-style: italic;
   margin: 0;
 }
 
 .ml-brand-story__scripture {
-  color: var(--ml-midnight);
+  color: rgb(var(--color-foreground));
   font-family: var(--ml-serif-font);
-  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  font-size: clamp(2.8rem, 4vw, var(--ml-story-scripture-size, 48px));
   font-style: italic;
   line-height: 1.22;
   margin-top: 6rem;
@@ -666,10 +666,10 @@ button {
 }
 
 .ml-brand-story__scripture cite {
-  color: var(--ml-gold);
+  color: var(--ml-story-accent);
   display: block;
   font-family: var(--ml-label-font);
-  font-size: 1.3rem;
+  font-size: var(--ml-story-label-size, 12px);
   font-style: normal;
   margin-top: 2rem;
   text-transform: uppercase;
@@ -682,7 +682,7 @@ button {
 }
 
 .ml-brand-story__chapter {
-  border-top: 1px solid rgba(201, 168, 76, 0.45);
+  border-top: 1px solid color-mix(in srgb, var(--ml-story-accent) 55%, transparent);
   padding: 6.4rem 0 0;
 }
 
@@ -695,9 +695,9 @@ button {
 }
 
 .ml-brand-story__chapter h2 {
-  color: var(--ml-midnight);
+  color: rgb(var(--color-foreground));
   font-family: var(--ml-serif-font);
-  font-size: clamp(3rem, 4vw, 4.2rem);
+  font-size: clamp(3rem, 4vw, var(--ml-story-chapter-heading-size, 42px));
   font-style: italic;
   font-weight: 400;
   line-height: 1.2;
@@ -706,17 +706,18 @@ button {
   text-align: center;
 }
 
-.ml-brand-story__chapter p {
-  color: var(--ml-near-black);
-  font-size: 1.8rem;
+.ml-brand-story__text p,
+.ml-brand-story__chapter > p:not(.ml-brand-story__label):not(.ml-brand-story__pull) {
+  color: rgba(var(--color-foreground), 0.86);
+  font-size: var(--ml-story-body-size, 18px);
   line-height: 1.85;
   margin: 0 0 2.4rem;
 }
 
 .ml-brand-story__pull {
-  color: var(--ml-midnight);
+  color: rgb(var(--color-foreground));
   font-family: var(--ml-serif-font);
-  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-size: clamp(2.8rem, 4vw, var(--ml-story-pull-size, 40px));
   font-style: italic;
   line-height: 1.25;
   margin: 4.8rem auto;
@@ -725,31 +726,105 @@ button {
 }
 
 .ml-brand-story__closing {
-  background: var(--ml-midnight);
-  color: var(--ml-ivory);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
   padding: 8rem 2rem;
   text-align: center;
 }
 
 .ml-brand-story__closing h2 {
-  color: var(--ml-ivory);
-  font-size: clamp(4rem, 6vw, 6.2rem);
+  color: rgb(var(--color-foreground));
+  font-size: clamp(4rem, 6vw, var(--ml-story-closing-heading-size, 64px));
   line-height: 1;
   margin: 0 0 1.2rem;
 }
 
 .ml-brand-story__closing p {
-  color: var(--ml-stone);
+  color: rgba(var(--color-foreground), 0.66);
   font-family: var(--ml-label-font);
   margin: 0.4rem 0;
   text-transform: uppercase;
 }
 
 .ml-brand-story__closing .ml-serif {
-  color: var(--ml-gold);
+  color: var(--ml-story-accent);
   font-family: var(--ml-serif-font);
   font-style: italic;
   text-transform: none;
+}
+
+.ml-brand-story .ml-gold-rule {
+  background: var(--ml-story-accent);
+}
+
+.ml-brand-story__closing .ml-button {
+  border-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-foreground));
+}
+
+.ml-brand-story__chapter--collapsible {
+  padding-top: 0;
+}
+
+.ml-brand-story__summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 2.4rem;
+  justify-content: space-between;
+  list-style: none;
+  padding: 3.2rem 0;
+}
+
+.ml-brand-story__summary::-webkit-details-marker {
+  display: none;
+}
+
+.ml-brand-story__summary .ml-brand-story__label {
+  display: block;
+  text-align: left;
+}
+
+.ml-brand-story__summary-title {
+  color: rgb(var(--color-foreground));
+  display: block;
+  font-family: var(--ml-serif-font);
+  font-size: clamp(2.8rem, 4vw, var(--ml-story-chapter-heading-size, 42px));
+  font-style: italic;
+  line-height: 1.18;
+  margin-top: 0.8rem;
+}
+
+.ml-brand-story__toggle {
+  border: 1px solid var(--ml-story-accent);
+  display: grid;
+  flex: 0 0 3.6rem;
+  height: 3.6rem;
+  place-items: center;
+  position: relative;
+  width: 3.6rem;
+}
+
+.ml-brand-story__toggle::before,
+.ml-brand-story__toggle::after {
+  background: var(--ml-story-accent);
+  content: "";
+  height: 1px;
+  position: absolute;
+  width: 1.4rem;
+}
+
+.ml-brand-story__toggle::after {
+  transform: rotate(90deg);
+  transition: transform 160ms ease;
+}
+
+.ml-brand-story__chapter[open] .ml-brand-story__toggle::after {
+  transform: rotate(0deg);
+}
+
+.ml-brand-story__chapter-content {
+  padding-bottom: 4.8rem;
 }
 
 .ml-page-body {
