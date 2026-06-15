@@ -1,15 +1,54 @@
-{% doc %}
-  @prompt
-    Create a full-width hero/gallery section at the top of the homepage where the merchant can showcase product mockup photos. It should support multiple images displayed in a clean, visually appealing layout (such as a grid or slideshow), with optional captions. Below that, create a brand story section with a rich text area where the merchant can write and format their brand narrative, with an optional heading and a background color setting.
-{% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
-  .ai-brand-story-{{ ai_gen_id }} {
+  /* ----------------------
+     Section Background
+  ----------------------- */
+  .ai-story-section-{{ ai_gen_id }} {
     display: block;
     width: 100%;
-    padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px;
     background-color: {{ block.settings.background_color }};
+  }
+
+  /* ----------------------
+     Gallery / Hero Area
+  ----------------------- */
+  .ai-gallery-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: {{ block.settings.gallery_gap }}px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .ai-gallery-item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-gallery-img-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4 / 5;
+    background-color: #f4f4f4;
+  }
+
+  .ai-gallery-caption-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    color: {{ block.settings.text_color }};
+  }
+
+  /* ----------------------
+     Brand Story Area
+  ----------------------- */
+  .ai-brand-story-wrapper-{{ ai_gen_id }} {
+    padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px;
   }
 
   .ai-brand-story__container-{{ ai_gen_id }} {
@@ -24,59 +63,32 @@
     color: {{ block.settings.heading_color }};
     font-size: {{ block.settings.heading_size }}px;
     line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .ai-brand-story__content-{{ ai_gen_id }} {
     text-align: {{ block.settings.text_alignment }};
     color: {{ block.settings.text_color }};
     font-size: {{ block.settings.text_size }}px;
-    line-height: 1.6;
+    line-height: 1.8;
   }
 
   .ai-brand-story__content-{{ ai_gen_id }} p {
-    margin: 0 0 16px;
+    margin: 0 0 24px;
   }
 
   .ai-brand-story__content-{{ ai_gen_id }} p:last-child {
     margin-bottom: 0;
   }
 
-  .ai-brand-story__content-{{ ai_gen_id }} h1,
-  .ai-brand-story__content-{{ ai_gen_id }} h2,
   .ai-brand-story__content-{{ ai_gen_id }} h3,
-  .ai-brand-story__content-{{ ai_gen_id }} h4,
-  .ai-brand-story__content-{{ ai_gen_id }} h5,
-  .ai-brand-story__content-{{ ai_gen_id }} h6 {
-    margin: 24px 0 12px;
+  .ai-brand-story__content-{{ ai_gen_id }} h4 {
+    margin: 40px 0 16px;
     color: {{ block.settings.heading_color }};
-  }
-
-  .ai-brand-story__content-{{ ai_gen_id }} h1:first-child,
-  .ai-brand-story__content-{{ ai_gen_id }} h2:first-child,
-  .ai-brand-story__content-{{ ai_gen_id }} h3:first-child,
-  .ai-brand-story__content-{{ ai_gen_id }} h4:first-child,
-  .ai-brand-story__content-{{ ai_gen_id }} h5:first-child,
-  .ai-brand-story__content-{{ ai_gen_id }} h6:first-child {
-    margin-top: 0;
-  }
-
-  .ai-brand-story__content-{{ ai_gen_id }} ul,
-  .ai-brand-story__content-{{ ai_gen_id }} ol {
-    margin: 0 0 16px;
-    padding-left: 24px;
-  }
-
-  .ai-brand-story__content-{{ ai_gen_id }} li {
-    margin-bottom: 8px;
-  }
-
-  .ai-brand-story__content-{{ ai_gen_id }} a {
-    color: {{ block.settings.link_color }};
-    text-decoration: underline;
-  }
-
-  .ai-brand-story__content-{{ ai_gen_id }} a:hover {
-    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1.2em;
   }
 
   .ai-brand-story__content-{{ ai_gen_id }} strong {
@@ -100,29 +112,84 @@
     .ai-brand-story__heading-{{ ai_gen_id }} {
       font-size: calc({{ block.settings.heading_size }}px * 0.8);
     }
-
     .ai-brand-story__content-{{ ai_gen_id }} {
       font-size: calc({{ block.settings.text_size }}px * 0.9);
+    }
+    .ai-gallery-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
   }
 {% endstyle %}
 
-<brand-story-{{ ai_gen_id }} class="ai-brand-story-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <div class="ai-brand-story__container-{{ ai_gen_id }}">
-    {% if block.settings.heading != blank %}
-      <h2 class="ai-brand-story__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
-    {% endif %}
+<brand-story-{{ ai_gen_id }} class="ai-story-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  
+  <div class="ai-gallery-{{ ai_gen_id }}">
+    
+    {%- if block.settings.image_1 != blank or block.settings.caption_1 != blank -%}
+      <div class="ai-gallery-item-{{ ai_gen_id }}">
+        {%- if block.settings.image_1 != blank -%}
+          {{ block.settings.image_1 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+        {%- endif -%}
+        {%- if block.settings.caption_1 != blank -%}
+          <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_1 }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
 
-    {% if block.settings.content != blank %}
-      <div class="ai-brand-story__content-{{ ai_gen_id }}">
-        {{ block.settings.content }}
+    {%- if block.settings.image_2 != blank or block.settings.caption_2 != blank -%}
+      <div class="ai-gallery-item-{{ ai_gen_id }}">
+        {%- if block.settings.image_2 != blank -%}
+          {{ block.settings.image_2 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+        {%- endif -%}
+        {%- if block.settings.caption_2 != blank -%}
+          <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_2 }}</div>
+        {%- endif -%}
       </div>
-    {% else %}
-      <div class="ai-brand-story__placeholder-{{ ai_gen_id }}">
-        Add your brand story using the rich text editor. Share your journey, values, and what makes your brand unique.
+    {%- endif -%}
+
+    {%- if block.settings.image_3 != blank or block.settings.caption_3 != blank -%}
+      <div class="ai-gallery-item-{{ ai_gen_id }}">
+        {%- if block.settings.image_3 != blank -%}
+          {{ block.settings.image_3 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+        {%- endif -%}
+        {%- if block.settings.caption_3 != blank -%}
+          <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_3 }}</div>
+        {%- endif -%}
       </div>
-    {% endif %}
+    {%- endif -%}
+
+    {%- if block.settings.image_4 != blank or block.settings.caption_4 != blank -%}
+      <div class="ai-gallery-item-{{ ai_gen_id }}">
+        {%- if block.settings.image_4 != blank -%}
+          {{ block.settings.image_4 | image_url: width: 800 | image_tag: class: "ai-gallery-img", loading: 'lazy' }}
+        {%- endif -%}
+        {%- if block.settings.caption_4 != blank -%}
+          <div class="ai-gallery-caption-{{ ai_gen_id }}">{{ block.settings.caption_4 }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
   </div>
+
+  <div class="ai-brand-story-wrapper-{{ ai_gen_id }}">
+    <div class="ai-brand-story__container-{{ ai_gen_id }}">
+      {% if block.settings.heading != blank %}
+        <h2 class="ai-brand-story__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+      {% endif %}
+
+      {% if block.settings.content != blank %}
+        <div class="ai-brand-story__content-{{ ai_gen_id }}">
+          {{ block.settings.content }}
+        </div>
+      {% else %}
+        <div class="ai-brand-story__placeholder-{{ ai_gen_id }}">
+          Add your brand story using the rich text editor. Share your journey, values, and what makes your brand unique.
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
 </brand-story-{{ ai_gen_id }}>
 
 <script>
@@ -132,23 +199,25 @@
         super();
       }
     }
-    customElements.define('brand-story-{{ ai_gen_id }}', BrandStory{{ ai_gen_id }});
+    if (!customElements.get('brand-story-{{ ai_gen_id }}')) {
+      customElements.define('brand-story-{{ ai_gen_id }}', BrandStory{{ ai_gen_id }});
+    }
   })();
 </script>
 
 {% schema %}
 {
-  "name": "Brand story",
+  "name": "Gallery & Brand Story",
   "settings": [
     {
       "type": "header",
-      "content": "Heading"
+      "content": "Brand Story Heading"
     },
     {
       "type": "inline_richtext",
       "id": "heading",
       "label": "Heading",
-      "default": "Our Story"
+      "default": "The Brand Story"
     },
     {
       "type": "range",
@@ -164,7 +233,7 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading color",
-      "default": "#2c2c2c"
+      "default": "#111111"
     },
     {
       "type": "range",
@@ -178,13 +247,13 @@
     },
     {
       "type": "header",
-      "content": "Content"
+      "content": "Brand Story Content"
     },
     {
       "type": "richtext",
       "id": "content",
-      "label": "Brand story",
-      "default": "<p>Share your brand's journey, values, and what makes you unique. This is your opportunity to connect with customers on a deeper level.</p>"
+      "label": "Brand story narrative",
+      "default": "<p><strong>In the beginning was the Word.</strong><br/>And the Word was with God.<br/>And the Word was God.<br/><em>John 1:1</em></p><h3>I. THE QUESTION</h3><p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you. The cut of what you wear. The weight of the fabric. The restraint of the detail.</p><p>Most people dress to fit in. To be acceptable. To not stand out. But there is a different kind of person. One who has settled a question that most people spend their entire lives avoiding: <em>Who does God say I am?</em></p><h3>II. THE NAME</h3><p><strong>Maison Logos. House of the Word.</strong></p><p>Maison is the French word for house. A house — a home, a heritage, an institution built to last. Logos is the Greek word used in John 1:1. The Word. Not just language — the divine intelligence through which all things were made.</p><h3>III. THE STANDARD</h3><p>We do not believe in cheap. Not because we worship luxury. But because we believe the things we make should honour the Person we build them for. The precision of the embroidery matters. The fit, the drape, the finish — all of it matters. Because you matter. Excellence is not arrogance. It is gratitude made visible.</p>"
     },
     {
       "type": "range",
@@ -201,36 +270,75 @@
       "id": "text_alignment",
       "label": "Text alignment",
       "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
       ],
-      "default": "left"
+      "default": "center"
     },
     {
       "type": "color",
       "id": "text_color",
       "label": "Text color",
-      "default": "#2c2c2c"
-    },
-    {
-      "type": "color",
-      "id": "link_color",
-      "label": "Link color",
-      "default": "#c9a84c"
+      "default": "#333333"
     },
     {
       "type": "header",
-      "content": "Layout"
+      "content": "Gallery Images"
+    },
+    {
+      "type": "range",
+      "id": "gallery_gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Gap",
+      "default": 16
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "caption_1",
+      "label": "Caption 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "caption_2",
+      "label": "Caption 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "caption_3",
+      "label": "Caption 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "caption_4",
+      "label": "Caption 4"
+    },
+    {
+      "type": "header",
+      "content": "General Layout"
     },
     {
       "type": "range",
@@ -239,12 +347,8 @@
       "max": 1200,
       "step": 100,
       "unit": "px",
-      "label": "Container width",
+      "label": "Story container width",
       "default": 800
-    },
-    {
-      "type": "header",
-      "content": "Colors"
     },
     {
       "type": "color",
@@ -253,17 +357,13 @@
       "default": "#ffffff"
     },
     {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
       "type": "range",
       "id": "padding_top",
       "min": 0,
       "max": 120,
       "step": 8,
       "unit": "px",
-      "label": "Padding top",
+      "label": "Story padding top",
       "default": 80
     },
     {
@@ -273,13 +373,13 @@
       "max": 120,
       "step": 8,
       "unit": "px",
-      "label": "Padding bottom",
+      "label": "Story padding bottom",
       "default": 80
     }
   ],
   "presets": [
     {
-      "name": "Brand story"
+      "name": "Gallery & Brand Story"
     }
   ]
 }
