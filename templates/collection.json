@@ -19,6 +19,7 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -36,10 +37,130 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_LDrakP": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_HNby3C": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Foundation Hoodie",
+            "heading_size": "h1"
+          }
+        },
+        "text_7GKJKU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_nHTrBm": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_HNby3C",
+        "text_7GKJKU",
+        "button_nHTrBm"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-grey-front-6a2e6a1a8966d.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_9QwjzV": {
+      "type": "featured-product",
+      "blocks": {
+        "text_QKaegg": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_8eYjKW": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_JhJLRz": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_w6fkxe": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_Ftp9Ay": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_PmmQyU": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_J47zrW": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_QKaegg",
+        "title_8eYjKW",
+        "price_JhJLRz",
+        "variant_picker_w6fkxe",
+        "quantity_selector_Ftp9Ay",
+        "buy_buttons_PmmQyU",
+        "share_J47zrW"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "the-foundation-hoodie",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "image_with_text_LDrakP",
+    "featured_product_9QwjzV"
   ]
 }
