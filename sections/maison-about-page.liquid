@@ -76,10 +76,17 @@
     </summary>
 
     <div class="ml-brand-story__body">
+      {%- assign rendered_story_keys = '' -%}
       {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'chapter' -%}
+              {%- assign rendered_story_keys = rendered_story_keys
+                | append: '||'
+                | append: block.settings.label
+                | append: '||'
+                | append: block.settings.heading
+              -%}
               <section class="ml-brand-story__chapter" {{ block.shopify_attributes }}>
                 {%- if block.settings.label != blank -%}
                   <p class="ml-brand-story__label">{{ block.settings.label }}</p>
@@ -99,6 +106,69 @@
               </section>
           {%- endcase -%}
         {%- endfor -%}
+
+        {%- unless rendered_story_keys contains 'II. THE NAME' or rendered_story_keys contains 'Maison Logos. House of the Word.' -%}
+          <section class="ml-brand-story__chapter">
+            <p class="ml-brand-story__label">II. THE NAME</p>
+            <h2>Maison Logos. House of the Word.</h2>
+            <div class="ml-brand-story__text rte">
+              <p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p>
+              <p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p>
+              <p>When God wanted to build something, He spoke first.</p>
+              <p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>
+            </div>
+            <p class="ml-brand-story__pull">You are not an accident.<br>You are not an afterthought.<br>You are a declaration.</p>
+            <div class="ml-brand-story__text rte">
+              <p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>
+            </div>
+          </section>
+        {%- endunless -%}
+
+        {%- unless rendered_story_keys contains 'III. THE STANDARD' or rendered_story_keys contains 'Why quality is a form of worship.' -%}
+          <section class="ml-brand-story__chapter">
+            <p class="ml-brand-story__label">III. THE STANDARD</p>
+            <h2>Why quality is a form of worship.</h2>
+            <div class="ml-brand-story__text rte">
+              <p>We do not believe in cheap.</p>
+              <p>Not because we worship luxury. But because we believe the things we make should honour the Person we build them for.</p>
+              <p>When Solomon built the Temple, he did not use ordinary stone. He used the finest cedar from Lebanon. Gold on the altar. Skilled hands on every joint. Not to impress people &mdash; to honour God.</p>
+              <p>Every piece from Maison Logos is built with that same conviction. The weight of the fabric matters. The precision of the embroidery matters. The fit, the drape, the finish &mdash; all of it matters. Because you matter. And the God who made you is not a God of mediocrity.</p>
+            </div>
+            <p class="ml-brand-story__pull">Excellence is not arrogance.<br>It is gratitude made visible.</p>
+            <div class="ml-brand-story__text rte">
+              <p>You will feel the difference the moment you put it on. That is not an accident. It is a standard.</p>
+            </div>
+          </section>
+        {%- endunless -%}
+
+        {%- unless rendered_story_keys contains 'IV. THE PERSON' or rendered_story_keys contains 'This was made for you.' -%}
+          <section class="ml-brand-story__chapter">
+            <p class="ml-brand-story__label">IV. THE PERSON</p>
+            <h2>This was made for you.</h2>
+            <div class="ml-brand-story__text rte">
+              <p>Maison Logos is not for everyone.</p>
+              <p>It is for the person who has been through enough to know that identity is not built on titles, achievements, or the approval of other people. It is for the man who has stood in the fire and come out knowing whose he is. The woman who has stopped shrinking to make other people comfortable. The young person who has decided, quietly and without drama, that they are going to live from a different source.</p>
+              <p>It is for the person who does not need to explain themselves. Who does not need their clothing to start a conversation &mdash; but is not afraid when it does.</p>
+            </div>
+            <p class="ml-brand-story__pull">Worn by those who know who they are.</p>
+            <div class="ml-brand-story__text rte">
+              <p>If that is you, you are home.</p>
+            </div>
+          </section>
+        {%- endunless -%}
+
+        {%- unless rendered_story_keys contains 'V. THE PROMISE' or rendered_story_keys contains 'What we commit to you.' -%}
+          <section class="ml-brand-story__chapter">
+            <p class="ml-brand-story__label">V. THE PROMISE</p>
+            <h2>What we commit to you.</h2>
+            <div class="ml-brand-story__text rte">
+              <p>Every collection from Maison Logos is released with intention. Not to chase trends. Not to flood the market. One piece at a time. One story at a time. Built slowly, with care, for people who are not in a hurry to be anyone other than themselves.</p>
+              <p>We will never sacrifice quality for volume. We will never chase relevance at the expense of truth. We will build this house the way it was named &mdash; on the Word. Immovable. Unhurried. Eternal.</p>
+              <p>What God builds, lasts.</p>
+              <p>So does what is built in His name.</p>
+            </div>
+          </section>
+        {%- endunless -%}
       {%- elsif page.content != blank -%}
         <div class="ml-brand-story__chapter">
           <div class="ml-brand-story__text rte">{{ page.content }}</div>
