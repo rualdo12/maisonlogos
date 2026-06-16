@@ -16,7 +16,7 @@
         "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-white-front-6a2e6a1a8c356.jpg",
         "image_2": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-grey-front-6a2e6a1a8dbc3.jpg",
         "image_overlay_opacity": 30,
-        "image_height": "adapt",
+        "image_height": "large",
         "image_behavior": "ambient",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
