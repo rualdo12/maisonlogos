@@ -16,14 +16,14 @@
         "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-white-front-6a2e6a1a8c356.jpg",
         "image_2": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-grey-front-6a2e6a1a8dbc3.jpg",
         "image_overlay_opacity": 30,
-        "image_height": "medium",
+        "image_height": "adapt",
         "image_behavior": "ambient",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": true,
         "color_scheme": "scheme-2",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "right",
         "show_text_below": true
       }
     },
@@ -45,7 +45,7 @@
           "settings": {
             "label": "II. THE NAME",
             "heading": "Maison Logos. House of the Word.",
-            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p><p>When God wanted to build something, He spoke first.</p><p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>",
+            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house — a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language — the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p><p>When God wanted to build something, He spoke first.</p><p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>",
             "pull_quote": "You are not an accident.\nYou are not an afterthought.\nYou are a declaration.",
             "body_after_quote": "<p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>"
           }
@@ -91,22 +91,22 @@
       "name": "Maison about page",
       "settings": {
         "color_scheme": "scheme-2",
-        "accent_color": "#C9A84C",
-        "muted_color": "#8C7B6B",
+        "accent_color": "#c9a84c",
+        "muted_color": "#8c7b6b",
         "story_open_by_default": false,
         "read_label": "Read the brand story",
         "logo_text_size": 132,
-        "label_text_size": 12,
+        "label_text_size": 18,
         "cover_heading_size": 64,
         "subtitle_size": 24,
-        "scripture_size": 48,
+        "scripture_size": 36,
         "chapter_heading_size": 42,
         "body_text_size": 18,
-        "pull_quote_size": 40,
+        "pull_quote_size": 30,
         "closing_heading_size": 64,
         "show_cover": true,
-        "logo_image": "shopify://shop_images/maison-logos-preview-dark.jpg",
-        "logo_width": 420,
+        "logo_image": "shopify://shop_images/maison-logos-v1-white-transparent.png",
+        "logo_width": 700,
         "brand_label": "MAISON LOGOS",
         "heading": "The Brand Story",
         "subtitle": "",
@@ -148,7 +148,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "square"
           }
         },
         "quantity_selector_KFTb6b": {
@@ -186,8 +186,8 @@
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
+        "media_position": "right",
+        "image_zoom": "hover",
         "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
