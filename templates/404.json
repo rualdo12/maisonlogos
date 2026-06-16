@@ -32,76 +32,6 @@
         "show_text_below": true
       }
     },
-    "featured_product_jeH4YY": {
-      "type": "featured-product",
-      "blocks": {
-        "text_QCTDfR": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title_nxttej": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "price_gVnMWG": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_Mt6bkG": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector_KFTb6b": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_Yrgchk": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "share_Wntfat": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
-      },
-      "block_order": [
-        "text_QCTDfR",
-        "title_nxttej",
-        "price_gVnMWG",
-        "variant_picker_Mt6bkG",
-        "quantity_selector_KFTb6b",
-        "buy_buttons_Yrgchk",
-        "share_Wntfat"
-      ],
-      "name": "t:sections.featured-product.presets.name",
-      "settings": {
-        "product": "the-foundation-hoodie",
-        "color_scheme": "scheme-2",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "maison_about_page_YXTeDF": {
       "type": "maison-about-page",
       "blocks": {
@@ -198,12 +128,82 @@
         "cta_label": "Shop Collection 001",
         "cta_link": "shopify://products/the-foundation-hoodie"
       }
+    },
+    "featured_product_jeH4YY": {
+      "type": "featured-product",
+      "blocks": {
+        "text_QCTDfR": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_nxttej": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_gVnMWG": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_Mt6bkG": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_KFTb6b": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_Yrgchk": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_Wntfat": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_QCTDfR",
+        "title_nxttej",
+        "price_gVnMWG",
+        "variant_picker_Mt6bkG",
+        "quantity_selector_KFTb6b",
+        "buy_buttons_Yrgchk",
+        "share_Wntfat"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "the-foundation-hoodie",
+        "color_scheme": "scheme-2",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "image_banner_wxgmVq",
-    "featured_product_jeH4YY",
-    "maison_about_page_YXTeDF"
+    "maison_about_page_YXTeDF",
+    "featured_product_jeH4YY"
   ]
 }
