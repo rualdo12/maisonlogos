@@ -13,8 +13,8 @@
       "type": "image-banner",
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-white-front-6a2e6a1a8c356.jpg",
-        "image_2": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-denim-front-6a310d04d8cde.jpg",
+        "image": "shopify://shop_images/unisex-premium-pullover-hoodie-black-front-6a3198d395c28.jpg",
+        "image_2": "shopify://shop_images/unisex-premium-pullover-hoodie-bone-front-6a31ac252bbd1.jpg",
         "image_overlay_opacity": 30,
         "image_height": "large",
         "image_behavior": "ambient",
@@ -180,7 +180,7 @@
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
-        "product": "the-foundation-hoodie",
+        "product": "the-foundation-hoodie-limited-edition",
         "color_scheme": "scheme-2",
         "secondary_background": false,
         "media_size": "medium",
