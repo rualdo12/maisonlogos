@@ -42,8 +42,7 @@
             "heading": "What does your clothing say before you say a word?",
             "body": "<p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you.</p>",
             "pull_quote": "",
-            "body_after_quote": "",
-            "open_by_default": false
+            "body_after_quote": ""
           }
         }
       },
@@ -56,8 +55,9 @@
         "color_scheme": "",
         "accent_color": "#c9a84c",
         "muted_color": "#8c7b6b",
-        "chapter_display": "collapsible",
-        "chapter_initial_state": "first_open",
+        "story_open_by_default": true,
+        "read_label": "Read the brand story",
+        "logo_text_size": 132,
         "label_text_size": 12,
         "cover_heading_size": 92,
         "subtitle_size": 24,
@@ -67,6 +67,8 @@
         "pull_quote_size": 40,
         "closing_heading_size": 64,
         "show_cover": true,
+        "logo_image": "shopify://shop_images/maison-logos-preview-dark.jpg",
+        "logo_width": 620,
         "brand_label": "MAISON LOGOS",
         "heading": "House of the Word",
         "subtitle": "The Brand Story",
