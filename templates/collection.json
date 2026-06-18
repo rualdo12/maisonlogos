@@ -17,26 +17,6 @@
         "color_scheme": "scheme-1"
       }
     },
-    "product-grid": {
-      "type": "main-collection-product-grid",
-      "settings": {
-        "products_per_page": 16,
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": true,
-        "show_rating": false,
-        "quick_add": "standard",
-        "enable_filtering": true,
-        "filter_type": "horizontal",
-        "enable_sorting": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "image_with_text_LDrakP": {
       "type": "image-with-text",
       "blocks": {
@@ -53,24 +33,15 @@
             "text": "<p><em>Collection 001</em></p><p><strong>The Foundation Hoodie</strong></p><p>Before you say a word, the world reads you.</p><p>Carry yourself like someone who knows whose they are.</p>",
             "text_style": "body"
           }
-        },
-        "button_nHTrBm": {
-          "type": "button",
-          "settings": {
-            "button_label": "Claim This Piece",
-            "button_link": "shopify://products/the-foundation-hoodie",
-            "button_style_secondary": true
-          }
         }
       },
       "block_order": [
         "heading_HNby3C",
-        "text_7GKJKU",
-        "button_nHTrBm"
+        "text_7GKJKU"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-grey-front-6a2e6a1a8966d.jpg",
+        "image": "shopify://shop_images/unisex-premium-pullover-hoodie-white-zoomed-in-6a34362c57fb5.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -81,6 +52,26 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-2",
         "color_scheme": "scheme-5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
