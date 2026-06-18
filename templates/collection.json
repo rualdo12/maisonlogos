@@ -19,7 +19,6 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -159,8 +158,8 @@
   },
   "order": [
     "banner",
-    "product-grid",
     "image_with_text_LDrakP",
+    "product-grid",
     "featured_product_9QwjzV"
   ]
 }
