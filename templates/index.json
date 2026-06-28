@@ -180,7 +180,7 @@
       ],
       "name": "t:sections.featured-product.presets.name",
       "settings": {
-        "product": "the-foundation-hoodie",
+        "product": "the-foundation-hoodie-limited-edition",
         "color_scheme": "scheme-2",
         "secondary_background": false,
         "media_size": "medium",
