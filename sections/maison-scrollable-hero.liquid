@@ -1,198 +1,186 @@
 {{ 'maison-scrollable-hero.css' | asset_url | stylesheet_tag }}
 
-{%- assign slide_count = section.blocks.size -%}
-
 {%- style -%}
-  #ScrollHero-{{ section.id }} {
-    /* Each slide gets 100vh of scroll space; the sticky container uses 100vh */
-    height: calc({{ slide_count }} * 100vh);
+  #VideoHero-{{ section.id }} {
+    height: calc({{ section.settings.scroll_length }}vh);
   }
-  #ScrollHero-{{ section.id }} .ml-scroll-hero__sticky {
-    height: 100vh;
+  #VideoHero-{{ section.id }} .ml-video-hero__overlay {
+    --ml-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
   }
 {%- endstyle -%}
 
-<maison-scrollable-hero id="ScrollHero-{{ section.id }}" class="ml-scroll-hero">
-  <div class="ml-scroll-hero__sticky">
-    <div class="ml-scroll-hero__track">
-      {%- for block in section.blocks -%}
-        <div class="ml-scroll-hero__slide" {{ block.shopify_attributes }}>
+<maison-video-hero id="VideoHero-{{ section.id }}" class="ml-video-hero">
+  <div class="ml-video-hero__sticky">
 
-          {%- comment -%} Background image {%- endcomment -%}
-          <div class="ml-scroll-hero__media">
-            {%- if block.settings.image != blank -%}
-              {%- assign fetch_priority = 'auto' -%}
-              {%- if forloop.first -%}{%- assign fetch_priority = 'high' -%}{%- endif -%}
-              {{
-                block.settings.image
-                | image_url: width: 3840
-                | image_tag:
-                  width: block.settings.image.width,
-                  height: block.settings.image.height,
-                  sizes: '100vw',
-                  widths: '750, 1100, 1500, 2000, 3000, 3840',
-                  fetchpriority: fetch_priority
-              }}
-            {%- else -%}
-              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            {%- endif -%}
-          </div>
+    {%- comment -%} Video {%- endcomment -%}
+    <div class="ml-video-hero__media">
+      {%- if section.settings.video != blank -%}
+        <video
+          class="ml-video-hero__video"
+          playsinline
+          muted
+          preload="auto"
+        >
+          {%- for source in section.settings.video.sources -%}
+            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+          {%- endfor -%}
+        </video>
+      {%- elsif section.settings.video_url != blank -%}
+        {{- section.settings.video_url -}}
+      {%- endif -%}
 
-          {%- comment -%} Dark overlay {%- endcomment -%}
-          <div
-            class="ml-scroll-hero__overlay"
-            style="--ml-hero-overlay: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"
-          ></div>
-
-          {%- comment -%} Text content {%- endcomment -%}
-          <div class="ml-scroll-hero__content">
-            {%- if block.settings.eyebrow != blank -%}
-              <p class="ml-scroll-hero__eyebrow">{{ block.settings.eyebrow }}</p>
-            {%- endif -%}
-
-            {%- if block.settings.heading != blank -%}
-              <h2 class="ml-scroll-hero__heading">{{ block.settings.heading }}</h2>
-            {%- endif -%}
-
-            {%- if block.settings.subtitle != blank -%}
-              <p class="ml-scroll-hero__subtitle">{{ block.settings.subtitle }}</p>
-            {%- endif -%}
-
-            {%- if block.settings.body != blank -%}
-              <p class="ml-scroll-hero__body">{{ block.settings.body }}</p>
-            {%- endif -%}
-
-            {%- if block.settings.cta_label != blank and block.settings.cta_link != blank -%}
-              <a href="{{ block.settings.cta_link }}" class="ml-scroll-hero__cta">
-                {{ block.settings.cta_label }}
-              </a>
-            {%- endif -%}
-          </div>
-
-          {%- comment -%} Slide dots — only render on first slide, JS positions from sticky container {%- endcomment -%}
-        </div>
-      {%- endfor -%}
+      {%- if section.settings.poster_image != blank -%}
+        {{
+          section.settings.poster_image
+          | image_url: width: 3840
+          | image_tag:
+            class: 'ml-video-hero__poster',
+            sizes: '100vw',
+            widths: '750, 1100, 1500, 2000, 3000, 3840',
+            fetchpriority: 'high'
+        }}
+      {%- endif -%}
     </div>
 
-    {%- comment -%} Progress dots {%- endcomment -%}
-    {%- if slide_count > 1 -%}
-      <div class="ml-scroll-hero__dots">
-        {%- for block in section.blocks -%}
-          <div class="ml-scroll-hero__dot{% if forloop.first %} is-active{% endif %}"></div>
-        {%- endfor -%}
-      </div>
-      <div class="ml-scroll-hero__index">
-        01 / {{ slide_count | prepend: '0' | slice: -2, 2 }}
-      </div>
-    {%- endif -%}
+    <div class="ml-video-hero__overlay"></div>
+
+    {%- comment -%} Text content {%- endcomment -%}
+    <div class="ml-video-hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ml-video-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="ml-video-hero__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="ml-video-hero__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <p class="ml-video-hero__body">{{ section.settings.body }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+        <a href="{{ section.settings.cta_link }}" class="ml-video-hero__cta">
+          {{ section.settings.cta_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Scroll hint — fades out once user starts scrolling {%- endcomment -%}
+    <div class="ml-video-hero__scroll-hint">
+      <span>Scroll</span>
+      <div class="ml-video-hero__scroll-line"></div>
+    </div>
+
+    {%- comment -%} Progress bar along bottom edge {%- endcomment -%}
+    <div class="ml-video-hero__progress"></div>
+
   </div>
-</maison-scrollable-hero>
+</maison-video-hero>
 
 <script src="{{ 'maison-scrollable-hero.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
-  "name": "Scrollable Hero",
+  "name": "Video Hero",
   "tag": "section",
-  "class": "section-ml-scroll-hero",
+  "class": "section-ml-video-hero",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
-  "blocks": [
+  "settings": [
     {
-      "type": "slide",
-      "name": "Slide",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Background image"
-        },
-        {
-          "type": "range",
-          "id": "overlay_opacity",
-          "min": 0,
-          "max": 80,
-          "step": 5,
-          "unit": "%",
-          "label": "Overlay darkness",
-          "default": 45
-        },
-        {
-          "type": "text",
-          "id": "eyebrow",
-          "label": "Eyebrow label",
-          "placeholder": "e.g. Collection 001"
-        },
-        {
-          "type": "textarea",
-          "id": "heading",
-          "label": "Heading",
-          "placeholder": "e.g. WALK OUT\nSHARPER"
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtitle (italic)",
-          "placeholder": "e.g. The Foundation Hoodie"
-        },
-        {
-          "type": "textarea",
-          "id": "body",
-          "label": "Body copy"
-        },
-        {
-          "type": "text",
-          "id": "cta_label",
-          "label": "Button label",
-          "placeholder": "Shop now"
-        },
-        {
-          "type": "url",
-          "id": "cta_link",
-          "label": "Button link"
-        }
-      ]
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video file (MP4)",
+      "info": "Upload an MP4 via Shopify Files. Recommended: short loop, 15–30s, landscape."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Poster image",
+      "info": "Shown before the user starts scrolling."
+    },
+    {
+      "type": "range",
+      "id": "scroll_length",
+      "min": 150,
+      "max": 500,
+      "step": 50,
+      "unit": "vh",
+      "label": "Scroll length",
+      "default": 300,
+      "info": "How much scroll distance the hero occupies. More = user spends longer in the hero."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay darkness",
+      "default": 45
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Collection 001"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WORN BY\nTHOSE WHO\nKNOW."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle (italic)",
+      "default": "The Foundation Hoodie"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body copy",
+      "default": "Before you speak, the world reads you. Maison Logos was built for the person who has already answered the question."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
     }
   ],
   "presets": [
     {
-      "name": "Scrollable Hero",
-      "blocks": [
-        {
-          "type": "slide",
-          "settings": {
-            "eyebrow": "Collection 001",
-            "heading": "WORN BY\nTHOSE WHO\nKNOW.",
-            "subtitle": "The Foundation Hoodie",
-            "body": "Before you speak, the world reads you. Maison Logos was built for the person who has already answered the question.",
-            "cta_label": "Shop Collection",
-            "cta_link": ""
-          }
-        },
-        {
-          "type": "slide",
-          "settings": {
-            "eyebrow": "The Standard",
-            "heading": "EXCELLENCE\nIS\nGRATITUDE.",
-            "subtitle": "Quality as conviction",
-            "body": "We do not believe in cheap. Every piece is built with the weight of what it represents.",
-            "cta_label": "Read the story",
-            "cta_link": ""
-          }
-        },
-        {
-          "type": "slide",
-          "settings": {
-            "eyebrow": "House of the Word",
-            "heading": "MAISON\nLOGOS.",
-            "subtitle": "In the beginning was the Word.",
-            "body": "Built slowly. Built with care. For people who are not in a hurry to be anyone other than themselves.",
-            "cta_label": "Discover more",
-            "cta_link": ""
-          }
-        }
-      ]
+      "name": "Video Hero",
+      "settings": {
+        "eyebrow": "Collection 001",
+        "heading": "WORN BY\nTHOSE WHO\nKNOW.",
+        "subtitle": "The Foundation Hoodie",
+        "body": "Before you speak, the world reads you. Maison Logos was built for the person who has already answered the question.",
+        "cta_label": "Shop Collection",
+        "scroll_length": 300,
+        "overlay_opacity": 45
+      }
     }
   ]
 }
