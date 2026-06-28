@@ -24,24 +24,6 @@
         "cta_link": ""
       }
     },
-    "image_banner_wxgmVq": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/unisex-premium-pullover-hoodie-carbon-grey-zoomed-in-6a3fa3f6d74c8.jpg",
-        "image_2": "shopify://shop_images/unisex-premium-pullover-hoodie-white-front-2-6a3f8251b7b17.jpg",
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "ambient",
-        "desktop_content_position": "middle-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": true,
-        "color_scheme": "scheme-2",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": true
-      }
-    },
     "maison_about_page_YXTeDF": {
       "type": "maison-about-page",
       "blocks": {
@@ -212,7 +194,6 @@
   },
   "order": [
     "maison_scrollable_hero_97mJND",
-    "image_banner_wxgmVq",
     "maison_about_page_YXTeDF",
     "featured_product_jeH4YY"
   ]
