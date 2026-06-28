@@ -13,9 +13,10 @@
       "type": "maison-scrollable-hero",
       "name": "Video Hero",
       "settings": {
+        "video": "shopify://files/videos/Maison Logos Product video.mp4",
         "poster_image": "shopify://shop_images/unisex-premium-pullover-hoodie-military-green-front-2-6a3fa48fd94c9.png",
         "scroll_length": 500,
-        "overlay_opacity": 45,
+        "overlay_opacity": 0,
         "eyebrow": "Collection 001",
         "heading": "WORN BY\nTHOSE WHO\nKNOW.",
         "subtitle": "The Foundation Hoodie",
