@@ -9,13 +9,13 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Corel_Logos_Maison_Logo.png",
+    "logo": "shopify://shop_images/maison-logos-preview-dark.jpg",
     "logo_width": 150,
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
-    "page_width": 1600,
+    "page_width": 1400,
     "spacing_sections": 80,
     "spacing_grid_horizontal": 32,
     "spacing_grid_vertical": 32,
@@ -38,7 +38,7 @@
     "inputs_radius": 0,
     "inputs_shadow_opacity": 0,
     "inputs_shadow_horizontal_offset": 0,
-    "inputs_shadow_vertical_offset": 12,
+    "inputs_shadow_vertical_offset": 4,
     "inputs_shadow_blur": 5,
     "card_style": "standard",
     "card_image_padding": 0,
@@ -62,10 +62,10 @@
     "collection_card_shadow_horizontal_offset": 0,
     "collection_card_shadow_vertical_offset": 4,
     "collection_card_shadow_blur": 5,
-    "blog_card_style": "card",
+    "blog_card_style": "standard",
     "blog_card_image_padding": 0,
     "blog_card_text_alignment": "left",
-    "blog_card_color_scheme": "scheme-5",
+    "blog_card_color_scheme": "scheme-2",
     "blog_card_border_thickness": 0,
     "blog_card_border_opacity": 10,
     "blog_card_corner_radius": 0,
@@ -116,7 +116,7 @@
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
-    "currency_code_enabled": false,
+    "currency_code_enabled": true,
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
@@ -136,22 +136,6 @@
       }
     },
     "content_for_index": [],
-    "blocks": {
-      "15683396631634586217": {
-        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
-        "settings": {
-          "button_color": "#000000",
-          "secondary_color": "#FFFFFF",
-          "ternary_color": "#6A6A6A",
-          "button_icon": "chat_bubble",
-          "button_text": "chat_with_us",
-          "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "lowest",
-          "greeting_message": ""
-        }
-      }
-    },
     "color_schemes": {
       "scheme-1": {
         "settings": {

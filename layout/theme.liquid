@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="{{ shop.name }}">
+    <meta name="publisher" content="{{ shop.name }}">
     <link rel="canonical" href="{{ canonical_url }}">
 
     {%- if settings.favicon != blank -%}
@@ -28,9 +31,10 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- assign meta_description = page_description | default: shop.description -%}
+    {%- if meta_description != blank -%}
+      <meta name="description" content="{{ meta_description | escape }}">
+    {%- endif -%}
 
     {% render 'meta-tags' %}
 
@@ -302,6 +306,60 @@
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "{{ request.origin }}/#organization",
+          "name": "{{ shop.name | escape }}",
+          "url": "{{ request.origin }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ settings.logo | image_url: width: 600 | prepend: 'https:' }}"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ request.origin }}/#website",
+          "url": "{{ request.origin }}",
+          "name": "{{ shop.name | escape }}",
+          "publisher": {
+            "@id": "{{ request.origin }}/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "{{ request.origin }}/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+        {%- if request.page_type == 'product' -%}
+        ,{
+          "@type": "Product",
+          "@id": "{{ canonical_url }}/#product",
+          "name": "{{ product.title | escape }}",
+          "description": "{{ product.description | strip_html | truncate: 300 | escape }}",
+          "brand": {
+            "@type": "Brand",
+            "name": "{{ product.vendor | escape }}"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "{{ canonical_url }}",
+            "priceCurrency": "{{ cart.currency.iso_code }}",
+            "price": "{{ product.price | money_without_currency | strip_html }}",
+            "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+          }
+        }
+        {%- endif -%}
+      ]
+    }
     </script>
   </head>
 

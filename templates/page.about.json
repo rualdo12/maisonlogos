@@ -27,7 +27,7 @@
           "settings": {
             "label": "II. THE NAME",
             "heading": "Maison Logos. House of the Word.",
-            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house — a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language — the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p><p>When God wanted to build something, He spoke first.</p><p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>",
+            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p><p>When God wanted to build something, He spoke first.</p><p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>",
             "pull_quote": "You are not an accident.\nYou are not an afterthought.\nYou are a declaration.",
             "body_after_quote": "<p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>"
           }
@@ -71,23 +71,22 @@
         "promise"
       ],
       "settings": {
-        "color_scheme": "scheme-2",
-        "accent_color": "#c9a84c",
-        "muted_color": "#8c7b6b",
+        "color_scheme": "scheme-1",
+        "accent_color": "#C9A84C",
+        "muted_color": "#8C7B6B",
         "story_open_by_default": false,
         "read_label": "Read the brand story",
+        "logo_width": 620,
         "logo_text_size": 132,
         "label_text_size": 12,
         "cover_heading_size": 64,
         "subtitle_size": 24,
-        "scripture_size": 36,
+        "scripture_size": 48,
         "chapter_heading_size": 42,
         "body_text_size": 18,
-        "pull_quote_size": 30,
+        "pull_quote_size": 40,
         "closing_heading_size": 64,
         "show_cover": true,
-        "logo_image": "shopify://shop_images/maison-logos-v1-white-transparent.png",
-        "logo_width": 620,
         "brand_label": "MAISON LOGOS",
         "heading": "House of the Word",
         "subtitle": "The Brand Story",
@@ -100,7 +99,7 @@
         "closing_color_scheme": "scheme-2",
         "closing_heading": "Maison Logos",
         "closing_subtitle": "House of the Word",
-        "domain": "mainoslogos.online",
+        "domain": "maisonlogos.com",
         "cta_label": "Shop Collection 001",
         "cta_link": "shopify://collections/all"
       }
