@@ -15,8 +15,8 @@
       "settings": {
         "image": "shopify://shop_images/unisex-premium-pullover-hoodie-carbon-grey-zoomed-in-6a3fa3f6d74c8.jpg",
         "image_2": "shopify://shop_images/unisex-premium-pullover-hoodie-white-front-2-6a3f8251b7b17.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "medium",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
         "image_behavior": "ambient",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
