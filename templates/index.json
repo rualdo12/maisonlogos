@@ -9,6 +9,21 @@
  */
 {
   "sections": {
+    "maison_scrollable_hero_97mJND": {
+      "type": "maison-scrollable-hero",
+      "name": "Video Hero",
+      "settings": {
+        "poster_image": "shopify://shop_images/unisex-premium-pullover-hoodie-military-green-front-2-6a3fa48fd94c9.jpg",
+        "scroll_length": 500,
+        "overlay_opacity": 45,
+        "eyebrow": "Collection 001",
+        "heading": "WORN BY\nTHOSE WHO\nKNOW.",
+        "subtitle": "The Foundation Hoodie",
+        "body": "Before you speak, the world reads you. Maison Logos was built for the person who has already answered the question.",
+        "cta_label": "Shop Collection",
+        "cta_link": ""
+      }
+    },
     "image_banner_wxgmVq": {
       "type": "image-banner",
       "name": "t:sections.image-banner.presets.name",
@@ -196,6 +211,7 @@
     }
   },
   "order": [
+    "maison_scrollable_hero_97mJND",
     "image_banner_wxgmVq",
     "maison_about_page_YXTeDF",
     "featured_product_jeH4YY"
