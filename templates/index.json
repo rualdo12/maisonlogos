@@ -13,8 +13,8 @@
       "type": "image-banner",
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-white-front-6a2e6a1a8c356.jpg",
-        "image_2": "shopify://shop_images/unisex-garment-dyed-hooded-sweatshirt-i-comfort-colors-1567-grey-front-6a2e6a1a8dbc3.jpg",
+        "image": "shopify://shop_images/unisex-premium-pullover-hoodie-carbon-grey-zoomed-in-6a3fa3f6d74c8.jpg",
+        "image_2": "shopify://shop_images/unisex-premium-pullover-hoodie-white-front-2-6a3f8251b7b17.jpg",
         "image_overlay_opacity": 30,
         "image_height": "medium",
         "image_behavior": "ambient",
@@ -91,8 +91,8 @@
       "name": "Maison about page",
       "settings": {
         "color_scheme": "scheme-2",
-        "accent_color": "#C9A84C",
-        "muted_color": "#8C7B6B",
+        "accent_color": "#c9a84c",
+        "muted_color": "#8c7b6b",
         "story_open_by_default": false,
         "read_label": "Read the brand story",
         "logo_text_size": 132,
