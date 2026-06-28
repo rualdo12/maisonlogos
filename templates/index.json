@@ -18,11 +18,11 @@
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "ambient",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
         "show_text_box": true,
         "color_scheme": "scheme-2",
-        "stack_images_on_mobile": true,
+        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
