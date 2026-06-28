@@ -1,0 +1,179 @@
+.ml-scroll-hero {
+  position: relative;
+}
+
+.ml-scroll-hero__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ml-scroll-hero__track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+.ml-scroll-hero__slide {
+  position: relative;
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ml-scroll-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ml-scroll-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.ml-scroll-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--ml-hero-overlay, 0.45));
+  z-index: 1;
+}
+
+.ml-scroll-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 6rem 5rem 5rem;
+  text-align: right;
+}
+
+.ml-scroll-hero__eyebrow {
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 1.6rem;
+}
+
+.ml-scroll-hero__heading {
+  font-family: var(--font-heading-family);
+  font-size: clamp(5rem, 8vw, 10rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 2rem;
+}
+
+.ml-scroll-hero__subtitle {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1.8rem;
+}
+
+.ml-scroll-hero__body {
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 38rem;
+  margin: 0 0 3rem;
+}
+
+.ml-scroll-hero__cta {
+  display: inline-block;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 0.4rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.ml-scroll-hero__cta:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Progress dots */
+.ml-scroll-hero__dots {
+  position: absolute;
+  bottom: 3rem;
+  left: 5rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.ml-scroll-hero__dot {
+  width: 2.4rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: background 0.3s ease, width 0.3s ease;
+}
+
+.ml-scroll-hero__dot.is-active {
+  background: #fff;
+  width: 4.8rem;
+}
+
+/* Slide index label */
+.ml-scroll-hero__index {
+  position: absolute;
+  bottom: 3rem;
+  right: 5rem;
+  z-index: 3;
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  .ml-scroll-hero__content {
+    padding: 4rem 2.4rem 7rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .ml-scroll-hero__heading {
+    font-size: clamp(4rem, 11vw, 6rem);
+  }
+
+  .ml-scroll-hero__dots {
+    left: 2.4rem;
+    bottom: 2.4rem;
+  }
+
+  .ml-scroll-hero__index {
+    right: 2.4rem;
+    bottom: 2.4rem;
+  }
+
+  .ml-scroll-hero__body {
+    max-width: 100%;
+  }
+}

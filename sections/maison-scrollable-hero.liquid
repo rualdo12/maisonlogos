@@ -1,0 +1,199 @@
+{{ 'maison-scrollable-hero.css' | asset_url | stylesheet_tag }}
+
+{%- assign slide_count = section.blocks.size -%}
+
+{%- style -%}
+  #ScrollHero-{{ section.id }} {
+    /* Each slide gets 100vh of scroll space; the sticky container uses 100vh */
+    height: calc({{ slide_count }} * 100vh);
+  }
+  #ScrollHero-{{ section.id }} .ml-scroll-hero__sticky {
+    height: 100vh;
+  }
+{%- endstyle -%}
+
+<maison-scrollable-hero id="ScrollHero-{{ section.id }}" class="ml-scroll-hero">
+  <div class="ml-scroll-hero__sticky">
+    <div class="ml-scroll-hero__track">
+      {%- for block in section.blocks -%}
+        <div class="ml-scroll-hero__slide" {{ block.shopify_attributes }}>
+
+          {%- comment -%} Background image {%- endcomment -%}
+          <div class="ml-scroll-hero__media">
+            {%- if block.settings.image != blank -%}
+              {%- assign fetch_priority = 'auto' -%}
+              {%- if forloop.first -%}{%- assign fetch_priority = 'high' -%}{%- endif -%}
+              {{
+                block.settings.image
+                | image_url: width: 3840
+                | image_tag:
+                  width: block.settings.image.width,
+                  height: block.settings.image.height,
+                  sizes: '100vw',
+                  widths: '750, 1100, 1500, 2000, 3000, 3840',
+                  fetchpriority: fetch_priority
+              }}
+            {%- else -%}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Dark overlay {%- endcomment -%}
+          <div
+            class="ml-scroll-hero__overlay"
+            style="--ml-hero-overlay: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"
+          ></div>
+
+          {%- comment -%} Text content {%- endcomment -%}
+          <div class="ml-scroll-hero__content">
+            {%- if block.settings.eyebrow != blank -%}
+              <p class="ml-scroll-hero__eyebrow">{{ block.settings.eyebrow }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.heading != blank -%}
+              <h2 class="ml-scroll-hero__heading">{{ block.settings.heading }}</h2>
+            {%- endif -%}
+
+            {%- if block.settings.subtitle != blank -%}
+              <p class="ml-scroll-hero__subtitle">{{ block.settings.subtitle }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.body != blank -%}
+              <p class="ml-scroll-hero__body">{{ block.settings.body }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.cta_label != blank and block.settings.cta_link != blank -%}
+              <a href="{{ block.settings.cta_link }}" class="ml-scroll-hero__cta">
+                {{ block.settings.cta_label }}
+              </a>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Slide dots — only render on first slide, JS positions from sticky container {%- endcomment -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Progress dots {%- endcomment -%}
+    {%- if slide_count > 1 -%}
+      <div class="ml-scroll-hero__dots">
+        {%- for block in section.blocks -%}
+          <div class="ml-scroll-hero__dot{% if forloop.first %} is-active{% endif %}"></div>
+        {%- endfor -%}
+      </div>
+      <div class="ml-scroll-hero__index">
+        01 / {{ slide_count | prepend: '0' | slice: -2, 2 }}
+      </div>
+    {%- endif -%}
+  </div>
+</maison-scrollable-hero>
+
+<script src="{{ 'maison-scrollable-hero.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Scrollable Hero",
+  "tag": "section",
+  "class": "section-ml-scroll-hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay darkness",
+          "default": 45
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow label",
+          "placeholder": "e.g. Collection 001"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "placeholder": "e.g. WALK OUT\nSHARPER"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle (italic)",
+          "placeholder": "e.g. The Foundation Hoodie"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body copy"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button label",
+          "placeholder": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrollable Hero",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Collection 001",
+            "heading": "WORN BY\nTHOSE WHO\nKNOW.",
+            "subtitle": "The Foundation Hoodie",
+            "body": "Before you speak, the world reads you. Maison Logos was built for the person who has already answered the question.",
+            "cta_label": "Shop Collection",
+            "cta_link": ""
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "The Standard",
+            "heading": "EXCELLENCE\nIS\nGRATITUDE.",
+            "subtitle": "Quality as conviction",
+            "body": "We do not believe in cheap. Every piece is built with the weight of what it represents.",
+            "cta_label": "Read the story",
+            "cta_link": ""
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "House of the Word",
+            "heading": "MAISON\nLOGOS.",
+            "subtitle": "In the beginning was the Word.",
+            "body": "Built slowly. Built with care. For people who are not in a hurry to be anyone other than themselves.",
+            "cta_label": "Discover more",
+            "cta_link": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
