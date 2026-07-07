@@ -26,10 +26,14 @@ if (!customElements.get('quick-add-modal')) {
         opener.querySelector('.loading__spinner').classList.remove('hidden');
 
         fetch(opener.getAttribute('data-product-url'))
-          .then((response) => response.text())
+          .then((response) => {
+            if (!response.ok) throw new Error(`Failed to load product (${response.status})`);
+            return response.text();
+          })
           .then((responseText) => {
             const responseHTML = new DOMParser().parseFromString(responseText, 'text/html');
             const productElement = responseHTML.querySelector('product-info');
+            if (!productElement) throw new Error('Product page did not return product content');
 
             this.preprocessHTML(productElement);
             HTMLUpdateUtility.setInnerHTML(this.modalContent, productElement.outerHTML);
@@ -40,6 +44,9 @@ if (!customElements.get('quick-add-modal')) {
             if (window.ProductModel) window.ProductModel.loadShopifyXR();
 
             super.show(opener);
+          })
+          .catch(() => {
+            window.location.href = opener.getAttribute('data-product-url');
           })
           .finally(() => {
             opener.removeAttribute('aria-disabled');
