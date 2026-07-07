@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "main": {
+      "type": "maison-faq",
+      "blocks": {
+        "what_is": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is Maison Logos?",
+            "answer": "<p>Maison Logos is a faith-rooted luxury streetwear house. Every piece is designed around a single idea &mdash; that what you wear should reflect an identity you've already settled, not one you're still trying to prove. We release in small, deliberate collections rather than constant drops.</p>"
+          }
+        },
+        "christian_brand": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Maison Logos a Christian clothing brand?",
+            "answer": "<p>We're a brand built by believers, for anyone who has made peace with their identity and wants to wear that peace without apology. Our name comes from John 1:1 &mdash; \"Logos\" is Greek for \"the Word.\" You don't need to share our faith to wear our pieces; you do need to appreciate what they stand for.</p>"
+          }
+        },
+        "materials": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are your pieces made from?",
+            "answer": "<p>Each product page lists the exact fabric, weight, and construction details for that piece under its description. We hold every item to the same standard: quality construction, considered detailing, and fabric that justifies its price.</p>"
+          }
+        },
+        "sizing": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I find my size?",
+            "answer": "<p>Check our <a href=\"/pages/size-guide\">Size Guide</a> for full chest, length, and sleeve measurements before you order. If you're between sizes, we generally recommend sizing up for a relaxed fit.</p>"
+          }
+        },
+        "shipping_where": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship worldwide?",
+            "answer": "<p>Yes &mdash; Maison Logos ships internationally. Shipping costs and delivery estimates are calculated at checkout based on your address, and prices display automatically in your local currency.</p>"
+          }
+        },
+        "shipping_time": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Every piece is made to order, so please allow processing time before your order ships, followed by transit time based on your location. You'll receive a tracking link by email as soon as your order is on its way.</p>"
+          }
+        },
+        "returns": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return and exchange policy?",
+            "answer": "<p>See our full <a href=\"/policies/refund-policy\">Refund Policy</a> for return eligibility and steps. Because pieces are made to order, we're unable to accept returns for incorrect sizing &mdash; please check the Size Guide before ordering &mdash; but we'll always make it right if an item arrives damaged or defective.</p>"
+          }
+        },
+        "care": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I care for my Maison Logos pieces?",
+            "answer": "<p>Follow the care label sewn into each garment. As a general rule: wash cold, inside out, and avoid tumble drying on high heat to protect embroidery and print detail.</p>"
+          }
+        },
+        "contact": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I get in touch?",
+            "answer": "<p>Reach us through our <a href=\"/pages/contact\">Contact page</a> and we'll respond as quickly as we can.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "what_is",
+        "christian_brand",
+        "materials",
+        "sizing",
+        "shipping_where",
+        "shipping_time",
+        "returns",
+        "care",
+        "contact"
+      ],
+      "settings": {
+        "label": "FAQ",
+        "heading": "Frequently Asked Questions",
+        "text": "Everything you need to know before you order."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

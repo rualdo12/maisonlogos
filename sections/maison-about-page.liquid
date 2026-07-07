@@ -1,200 +1,187 @@
 {%- liquid
   assign story_accent = section.settings.accent_color | default: '#C9A84C'
-  assign story_muted = section.settings.muted_color | default: '#8C7B6B'
+  assign story_muted  = section.settings.muted_color  | default: '#8C7B6B'
 -%}
 
 <article
   class="ml-brand-story color-{{ section.settings.color_scheme }} gradient"
   style="
     --ml-story-accent: {{ story_accent }};
-    --ml-story-muted: {{ story_muted }};
-    --ml-story-logo-width: {{ section.settings.logo_width }}px;
-    --ml-story-logo-text-size: {{ section.settings.logo_text_size }}px;
-    --ml-story-label-size: {{ section.settings.label_text_size }}px;
-    --ml-story-cover-heading-size: {{ section.settings.cover_heading_size }}px;
-    --ml-story-subtitle-size: {{ section.settings.subtitle_size }}px;
-    --ml-story-scripture-size: {{ section.settings.scripture_size }}px;
-    --ml-story-chapter-heading-size: {{ section.settings.chapter_heading_size }}px;
-    --ml-story-body-size: {{ section.settings.body_text_size }}px;
-    --ml-story-pull-size: {{ section.settings.pull_quote_size }}px;
-    --ml-story-closing-heading-size: {{ section.settings.closing_heading_size }}px;
+    --ml-story-muted:  {{ story_muted }};
+    --ml-story-logo-width:          {{ section.settings.logo_width }}px;
+    --ml-story-logo-text-size:      {{ section.settings.logo_text_size }}px;
+    --ml-story-label-size:          {{ section.settings.label_text_size }}px;
+    --ml-story-cover-heading-size:  {{ section.settings.cover_heading_size }}px;
+    --ml-story-subtitle-size:       {{ section.settings.subtitle_size }}px;
+    --ml-story-scripture-size:      {{ section.settings.scripture_size }}px;
+    --ml-story-chapter-heading-size:{{ section.settings.chapter_heading_size }}px;
+    --ml-story-body-size:           {{ section.settings.body_text_size }}px;
+    --ml-story-pull-size:           {{ section.settings.pull_quote_size }}px;
+    --ml-story-closing-heading-size:{{ section.settings.closing_heading_size }}px;
   "
 >
+
+  {%- comment -%} ── COVER ──────────────────────────────────────── {%- endcomment -%}
   {%- if section.settings.show_cover -%}
-    <header class="ml-brand-story__cover">
-      {%- if section.settings.logo_image != blank -%}
-        <div class="ml-brand-story__logo">
+    <header class="ml-brand-story__cover{% if section.settings.cover_image != blank %} ml-brand-story__cover--split{% endif %}">
+
+      <div class="ml-brand-story__cover-text">
+        {%- if section.settings.logo_image != blank -%}
+          <div class="ml-brand-story__logo ml-reveal">
+            {{
+              section.settings.logo_image
+              | image_url: width: 1400
+              | image_tag:
+                widths: '320, 480, 640, 900, 1200, 1400',
+                sizes: '(min-width: 750px) 520px, 72vw',
+                class: 'ml-brand-story__logo-image',
+                loading: 'eager'
+            }}
+          </div>
+        {%- elsif section.settings.brand_label != blank -%}
+          <p class="ml-brand-story__logo-text ml-reveal">{{ section.settings.brand_label }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="ml-reveal ml-reveal--delay-1">{{ section.settings.heading }}</h1>
+        {%- endif -%}
+
+        <span class="ml-brand-story__dash ml-reveal ml-reveal--delay-2" aria-hidden="true">&mdash;</span>
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="ml-brand-story__subtitle ml-reveal ml-reveal--delay-2">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.show_scripture -%}
+          <div class="ml-brand-story__scripture ml-reveal ml-reveal--delay-3">
+            {%- if section.settings.scripture_line_1 != blank -%}<p>{{ section.settings.scripture_line_1 }}</p>{%- endif -%}
+            {%- if section.settings.scripture_line_2 != blank -%}<p>{{ section.settings.scripture_line_2 }}</p>{%- endif -%}
+            {%- if section.settings.scripture_line_3 != blank -%}<p>{{ section.settings.scripture_line_3 }}</p>{%- endif -%}
+            {%- if section.settings.scripture_reference != blank -%}
+              <cite>{{ section.settings.scripture_reference }}</cite>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div class="ml-brand-story__scroll-cue ml-reveal ml-reveal--delay-4" aria-hidden="true">
+          <span class="ml-brand-story__scroll-label">Scroll</span>
+          <span class="ml-brand-story__scroll-line"></span>
+        </div>
+      </div>
+
+      {%- if section.settings.cover_image != blank -%}
+        <div class="ml-brand-story__cover-image">
           {{
-            section.settings.logo_image
-            | image_url: width: 1400
+            section.settings.cover_image
+            | image_url: width: 2000
             | image_tag:
-              widths: '320, 480, 640, 900, 1200, 1400',
-              sizes: '(min-width: 750px) 640px, 86vw',
-              class: 'ml-brand-story__logo-image',
+              widths: '600, 900, 1200, 1600, 2000',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              class: 'ml-brand-story__cover-img',
               loading: 'eager'
           }}
+          <div class="ml-brand-story__cover-image-overlay"></div>
         </div>
-      {%- elsif section.settings.brand_label != blank -%}
-        <p class="ml-brand-story__logo-text">{{ section.settings.brand_label }}</p>
       {%- endif -%}
 
-      {%- if section.settings.heading != blank -%}
-        <h1>{{ section.settings.heading }}</h1>
-      {%- endif -%}
-      <span class="ml-brand-story__dash" aria-hidden="true">&mdash;</span>
-      {%- if section.settings.subtitle != blank -%}
-        <p class="ml-brand-story__subtitle">{{ section.settings.subtitle }}</p>
-      {%- endif -%}
-      {%- if section.settings.show_scripture -%}
-        <div class="ml-brand-story__scripture">
-          {%- if section.settings.scripture_line_1 != blank -%}
-            <p>{{ section.settings.scripture_line_1 }}</p>
-          {%- endif -%}
-          {%- if section.settings.scripture_line_2 != blank -%}
-            <p>{{ section.settings.scripture_line_2 }}</p>
-          {%- endif -%}
-          {%- if section.settings.scripture_line_3 != blank -%}
-            <p>{{ section.settings.scripture_line_3 }}</p>
-          {%- endif -%}
-          {%- if section.settings.scripture_reference != blank -%}
-            <cite>{{ section.settings.scripture_reference }}</cite>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
     </header>
   {%- endif -%}
 
-  <details
-    class="ml-brand-story__reveal"
-    {% if section.settings.story_open_by_default %}
-      open
-    {% endif %}
-  >
-    <summary class="ml-brand-story__read-trigger">
-      <span class="ml-brand-story__read-label">{{ section.settings.read_label }}</span>
-      <span class="ml-brand-story__read-toggle" aria-hidden="true"></span>
-    </summary>
-
+  {%- comment -%} ── CHAPTERS (always visible) ──────────────────── {%- endcomment -%}
+  {%- if section.blocks.size > 0 -%}
     <div class="ml-brand-story__body">
-      {%- assign rendered_story_keys = '' -%}
-      {%- if section.blocks.size > 0 -%}
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'chapter' -%}
-              {%- assign rendered_story_keys = rendered_story_keys
-                | append: '||'
-                | append: block.settings.label
-                | append: '||'
-                | append: block.settings.heading
-              -%}
-              <section class="ml-brand-story__chapter" {{ block.shopify_attributes }}>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'chapter' -%}
+            <section
+              class="ml-brand-story__chapter{% if block.settings.image != blank %} ml-brand-story__chapter--imaged{% if block.settings.image_position == 'right' %} ml-brand-story__chapter--img-right{% endif %}{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+
+              {%- if block.settings.image != blank -%}
+                <div class="ml-brand-story__chapter-media ml-reveal">
+                  {{
+                    block.settings.image
+                    | image_url: width: 1400
+                    | image_tag:
+                      widths: '480, 700, 900, 1200, 1400',
+                      sizes: '(min-width: 990px) 44vw, 90vw',
+                      class: 'ml-brand-story__chapter-img'
+                  }}
+                </div>
+              {%- endif -%}
+
+              <div class="ml-brand-story__chapter-content">
+                {%- assign chapter_num = forloop.index | prepend: '0' | slice: -2, 2 -%}
+                <span class="ml-brand-story__chapter-num" aria-hidden="true">{{ chapter_num }}</span>
+
                 {%- if block.settings.label != blank -%}
-                  <p class="ml-brand-story__label">{{ block.settings.label }}</p>
+                  <p class="ml-brand-story__label ml-reveal">{{ block.settings.label }}</p>
                 {%- endif -%}
+
                 {%- if block.settings.heading != blank -%}
-                  <h2>{{ block.settings.heading }}</h2>
+                  <h2 class="ml-reveal ml-reveal--delay-1">{{ block.settings.heading }}</h2>
                 {%- endif -%}
+
                 {%- if block.settings.body != blank -%}
-                  <div class="ml-brand-story__text rte">{{ block.settings.body }}</div>
+                  <div class="ml-brand-story__text rte ml-reveal ml-reveal--delay-2">{{ block.settings.body }}</div>
                 {%- endif -%}
-                {%- if block.settings.pull_quote != blank -%}
-                  <p class="ml-brand-story__pull">{{ block.settings.pull_quote | newline_to_br }}</p>
-                {%- endif -%}
-                {%- if block.settings.body_after_quote != blank -%}
-                  <div class="ml-brand-story__text rte">{{ block.settings.body_after_quote }}</div>
-                {%- endif -%}
-              </section>
-          {%- endcase -%}
-        {%- endfor -%}
+              </div>
 
-        {%- unless rendered_story_keys contains 'II. THE NAME' or rendered_story_keys contains 'Maison Logos. House of the Word.' -%}
-          <section class="ml-brand-story__chapter">
-            <p class="ml-brand-story__label">II. THE NAME</p>
-            <h2>Maison Logos. House of the Word.</h2>
-            <div class="ml-brand-story__text rte">
-              <p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p>
-              <p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p>
-              <p>When God wanted to build something, He spoke first.</p>
-              <p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>
-            </div>
-            <p class="ml-brand-story__pull">You are not an accident.<br>You are not an afterthought.<br>You are a declaration.</p>
-            <div class="ml-brand-story__text rte">
-              <p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>
-            </div>
-          </section>
-        {%- endunless -%}
+              {%- if block.settings.pull_quote != blank -%}
+                <blockquote class="ml-brand-story__pull ml-reveal">
+                  <p>{{ block.settings.pull_quote | newline_to_br }}</p>
+                </blockquote>
+              {%- endif -%}
 
-        {%- unless rendered_story_keys contains 'III. THE STANDARD' or rendered_story_keys contains 'Why quality is a form of worship.' -%}
-          <section class="ml-brand-story__chapter">
-            <p class="ml-brand-story__label">III. THE STANDARD</p>
-            <h2>Why quality is a form of worship.</h2>
-            <div class="ml-brand-story__text rte">
-              <p>We do not believe in cheap.</p>
-              <p>Not because we worship luxury. But because we believe the things we make should honour the Person we build them for.</p>
-              <p>When Solomon built the Temple, he did not use ordinary stone. He used the finest cedar from Lebanon. Gold on the altar. Skilled hands on every joint. Not to impress people &mdash; to honour God.</p>
-              <p>Every piece from Maison Logos is built with that same conviction. The weight of the fabric matters. The precision of the embroidery matters. The fit, the drape, the finish &mdash; all of it matters. Because you matter. And the God who made you is not a God of mediocrity.</p>
-            </div>
-            <p class="ml-brand-story__pull">Excellence is not arrogance.<br>It is gratitude made visible.</p>
-            <div class="ml-brand-story__text rte">
-              <p>You will feel the difference the moment you put it on. That is not an accident. It is a standard.</p>
-            </div>
-          </section>
-        {%- endunless -%}
+              {%- if block.settings.body_after_quote != blank -%}
+                <div class="ml-brand-story__text ml-brand-story__text--after rte ml-reveal">{{ block.settings.body_after_quote }}</div>
+              {%- endif -%}
 
-        {%- unless rendered_story_keys contains 'IV. THE PERSON' or rendered_story_keys contains 'This was made for you.' -%}
-          <section class="ml-brand-story__chapter">
-            <p class="ml-brand-story__label">IV. THE PERSON</p>
-            <h2>This was made for you.</h2>
-            <div class="ml-brand-story__text rte">
-              <p>Maison Logos is not for everyone.</p>
-              <p>It is for the person who has been through enough to know that identity is not built on titles, achievements, or the approval of other people. It is for the man who has stood in the fire and come out knowing whose he is. The woman who has stopped shrinking to make other people comfortable. The young person who has decided, quietly and without drama, that they are going to live from a different source.</p>
-              <p>It is for the person who does not need to explain themselves. Who does not need their clothing to start a conversation &mdash; but is not afraid when it does.</p>
-            </div>
-            <p class="ml-brand-story__pull">Worn by those who know who they are.</p>
-            <div class="ml-brand-story__text rte">
-              <p>If that is you, you are home.</p>
-            </div>
-          </section>
-        {%- endunless -%}
-
-        {%- unless rendered_story_keys contains 'V. THE PROMISE' or rendered_story_keys contains 'What we commit to you.' -%}
-          <section class="ml-brand-story__chapter">
-            <p class="ml-brand-story__label">V. THE PROMISE</p>
-            <h2>What we commit to you.</h2>
-            <div class="ml-brand-story__text rte">
-              <p>Every collection from Maison Logos is released with intention. Not to chase trends. Not to flood the market. One piece at a time. One story at a time. Built slowly, with care, for people who are not in a hurry to be anyone other than themselves.</p>
-              <p>We will never sacrifice quality for volume. We will never chase relevance at the expense of truth. We will build this house the way it was named &mdash; on the Word. Immovable. Unhurried. Eternal.</p>
-              <p>What God builds, lasts.</p>
-              <p>So does what is built in His name.</p>
-            </div>
-          </section>
-        {%- endunless -%}
-      {%- elsif page.content != blank -%}
-        <div class="ml-brand-story__chapter">
-          <div class="ml-brand-story__text rte">{{ page.content }}</div>
-        </div>
-      {%- endif -%}
+            </section>
+        {%- endcase -%}
+      {%- endfor -%}
     </div>
-  </details>
+  {%- endif -%}
 
+  {%- comment -%} ── CLOSING ────────────────────────────────────── {%- endcomment -%}
   {%- if section.settings.show_closing -%}
     <footer class="ml-brand-story__closing color-{{ section.settings.closing_color_scheme }} gradient">
       {%- if section.settings.closing_heading != blank -%}
-        <h2>{{ section.settings.closing_heading }}</h2>
+        <h2 class="ml-reveal">{{ section.settings.closing_heading }}</h2>
       {%- endif -%}
       {%- if section.settings.closing_subtitle != blank -%}
-        <p class="ml-serif">{{ section.settings.closing_subtitle }}</p>
+        <p class="ml-serif ml-reveal ml-reveal--delay-1">{{ section.settings.closing_subtitle }}</p>
       {%- endif -%}
       {%- if section.settings.domain != blank -%}
-        <p>{{ section.settings.domain }}</p>
+        <p class="ml-reveal ml-reveal--delay-1">{{ section.settings.domain }}</p>
       {%- endif -%}
       {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
-        <span class="ml-gold-rule"></span>
-        <a class="ml-button ml-button--ivory" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+        <span class="ml-gold-rule ml-reveal ml-reveal--delay-2"></span>
+        <a class="ml-button ml-button--ivory ml-reveal ml-reveal--delay-2" href="{{ section.settings.cta_link }}">
+          {{ section.settings.cta_label }}
+        </a>
       {%- endif -%}
     </footer>
   {%- endif -%}
+
 </article>
+
+<script>
+  (() => {
+    const els = document.querySelectorAll('.ml-reveal');
+    if (!els.length) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('ml-reveal--visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
 
 {% schema %}
 {
@@ -219,12 +206,6 @@
       "id": "muted_color",
       "label": "Muted text color",
       "default": "#8C7B6B"
-    },
-    {
-      "type": "checkbox",
-      "id": "story_open_by_default",
-      "label": "Open full story by default",
-      "default": false
     },
     {
       "type": "text",
@@ -259,7 +240,7 @@
     {
       "type": "range",
       "id": "cover_heading_size",
-      "label": "House of the Word size",
+      "label": "Cover heading size",
       "min": 32,
       "max": 96,
       "step": 4,
@@ -370,6 +351,12 @@
       "default": "The Brand Story"
     },
     {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover image (right panel)",
+      "info": "Adds a full-height product image to the right side of the cover. Recommended: portrait product shot."
+    },
+    {
       "type": "checkbox",
       "id": "show_scripture",
       "label": "Show scripture",
@@ -477,6 +464,22 @@
           "type": "richtext",
           "id": "body_after_quote",
           "label": "Body after pull quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Chapter image (optional)",
+          "info": "Adds a full-height image beside this chapter's text."
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image side",
+          "options": [
+            { "value": "left",  "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
         }
       ]
     }
@@ -492,7 +495,7 @@
             "heading": "What does your clothing say before you say a word?",
             "body": "<p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you. The cut of what you wear. The weight of the fabric. The restraint of the detail. Whether you carry yourself like someone who knows exactly who they are.</p><p>Most people dress to fit in. To be acceptable. To not stand out.</p><p>But there is a different kind of person. One who has settled a question that most people spend their entire lives avoiding.</p>",
             "pull_quote": "Who does God say I am?",
-            "body_after_quote": "<p>When that question is answered &mdash; truly answered, not just recited but lived in the bones &mdash; something changes. The way you walk changes. The way you enter a room changes. The way you carry silence changes.</p><p>Maison Logos was built for that person.</p>"
+            "body_after_quote": "<p>When that question is answered — truly answered, not just recited but lived in the bones — something changes. The way you walk changes. The way you enter a room changes. The way you carry silence changes.</p><p>Maison Logos was built for that person.</p>"
           }
         },
         {
@@ -500,7 +503,7 @@
           "settings": {
             "label": "II. THE NAME",
             "heading": "Maison Logos. House of the Word.",
-            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p><p>When God wanted to build something, He spoke first.</p><p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>",
+            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house — a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language — the divine intelligence through which all things were made.</p>",
             "pull_quote": "You are not an accident.\nYou are not an afterthought.\nYou are a declaration.",
             "body_after_quote": "<p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>"
           }
@@ -510,7 +513,7 @@
           "settings": {
             "label": "III. THE STANDARD",
             "heading": "Why quality is a form of worship.",
-            "body": "<p>We do not believe in cheap.</p><p>Not because we worship luxury. But because we believe the things we make should honour the Person we build them for.</p><p>When Solomon built the Temple, he did not use ordinary stone. He used the finest cedar from Lebanon. Gold on the altar. Skilled hands on every joint. Not to impress people &mdash; to honour God.</p><p>Every piece from Maison Logos is built with that same conviction. The weight of the fabric matters. The precision of the embroidery matters. The fit, the drape, the finish &mdash; all of it matters. Because you matter. And the God who made you is not a God of mediocrity.</p>",
+            "body": "<p>We do not believe in cheap.</p><p>Not because we worship luxury. But because we believe the things we make should honour the Person we build them for.</p><p>Every piece from Maison Logos is built with that conviction. The weight of the fabric matters. The precision of the embroidery matters. The fit, the drape, the finish — all of it matters.</p>",
             "pull_quote": "Excellence is not arrogance.\nIt is gratitude made visible.",
             "body_after_quote": "<p>You will feel the difference the moment you put it on. That is not an accident. It is a standard.</p>"
           }
@@ -520,7 +523,7 @@
           "settings": {
             "label": "IV. THE PERSON",
             "heading": "This was made for you.",
-            "body": "<p>Maison Logos is not for everyone.</p><p>It is for the person who has been through enough to know that identity is not built on titles, achievements, or the approval of other people. It is for the man who has stood in the fire and come out knowing whose he is. The woman who has stopped shrinking to make other people comfortable. The young person who has decided, quietly and without drama, that they are going to live from a different source.</p><p>It is for the person who does not need to explain themselves. Who does not need their clothing to start a conversation &mdash; but is not afraid when it does.</p>",
+            "body": "<p>Maison Logos is not for everyone.</p><p>It is for the person who has been through enough to know that identity is not built on titles, achievements, or the approval of other people.</p><p>It is for the person who does not need to explain themselves.</p>",
             "pull_quote": "Worn by those who know who they are.",
             "body_after_quote": "<p>If that is you, you are home.</p>"
           }
@@ -530,7 +533,7 @@
           "settings": {
             "label": "V. THE PROMISE",
             "heading": "What we commit to you.",
-            "body": "<p>Every collection from Maison Logos is released with intention. Not to chase trends. Not to flood the market. One piece at a time. One story at a time. Built slowly, with care, for people who are not in a hurry to be anyone other than themselves.</p><p>We will never sacrifice quality for volume. We will never chase relevance at the expense of truth. We will build this house the way it was named &mdash; on the Word. Immovable. Unhurried. Eternal.</p><p>What God builds, lasts.</p><p>So does what is built in His name.</p>"
+            "body": "<p>Every collection from Maison Logos is released with intention. Not to chase trends. Not to flood the market. One piece at a time. One story at a time.</p><p>What God builds, lasts.</p><p>So does what is built in His name.</p>"
           }
         }
       ]

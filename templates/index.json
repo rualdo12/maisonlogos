@@ -9,6 +9,7 @@
  */
 {
   "sections": {
+<<<<<<< Updated upstream
     "maison_scrollable_hero_97mJND": {
       "type": "maison-scrollable-hero",
       "name": "Video Hero",
@@ -17,12 +18,23 @@
         "poster_image": "shopify://shop_images/unisex-premium-pullover-hoodie-military-green-front-2-6a3fa48fd94c9.png",
         "scroll_length": 500,
         "overlay_opacity": 0,
+=======
+    "scrollable_hero_main": {
+      "type": "maison-scrollable-hero",
+      "settings": {
+        "scroll_length": 300,
+        "overlay_opacity": 45,
+>>>>>>> Stashed changes
         "eyebrow": "Collection 001",
         "heading": "WORN BY\nTHOSE WHO\nKNOW.",
         "subtitle": "The Foundation Hoodie",
         "body": "Before you speak, the world reads you. Maison Logos was built for the person who has already answered the question.",
         "cta_label": "Shop Collection",
+<<<<<<< Updated upstream
         "cta_link": ""
+=======
+        "cta_link": "shopify://collections/all"
+>>>>>>> Stashed changes
       }
     },
     "maison_about_page_YXTeDF": {
@@ -103,7 +115,11 @@
         "pull_quote_size": 40,
         "closing_heading_size": 64,
         "show_cover": true,
+<<<<<<< Updated upstream
         "logo_image": "shopify://shop_images/Corel_Logos_Maison_Logo.png",
+=======
+        "logo_image": "shopify://shop_images/maison-logos-preview-dark.jpg",
+>>>>>>> Stashed changes
         "logo_width": 420,
         "brand_label": "MAISON LOGOS",
         "heading": "The Brand Story",
@@ -119,7 +135,11 @@
         "closing_subtitle": "House of the Word",
         "domain": "mainoslogos.online",
         "cta_label": "Shop Collection 001",
+<<<<<<< Updated upstream
         "cta_link": "shopify://products/the-foundation-hoodie"
+=======
+        "cta_link": "shopify://products/the-foundation-hoodie-limited-edition"
+>>>>>>> Stashed changes
       }
     },
     "featured_product_jeH4YY": {
@@ -194,7 +214,11 @@
     }
   },
   "order": [
+<<<<<<< Updated upstream
     "maison_scrollable_hero_97mJND",
+=======
+    "scrollable_hero_main",
+>>>>>>> Stashed changes
     "maison_about_page_YXTeDF",
     "featured_product_jeH4YY"
   ]
