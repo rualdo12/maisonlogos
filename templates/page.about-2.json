@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "maison-about-page",
+      "blocks": {
+        "question": {
+          "type": "chapter",
+          "settings": {
+            "label": "I. THE QUESTION",
+            "heading": "What does your clothing say before you say a word?",
+            "body": "<p>Every morning, before you speak, before anyone hears your name or knows your story, the world reads you. The cut of what you wear. The weight of the fabric. The restraint of the detail. Whether you carry yourself like someone who knows exactly who they are.</p><p>Most people dress to fit in. To be acceptable. To not stand out.</p><p>But there is a different kind of person. One who has settled a question that most people spend their entire lives avoiding.</p>",
+            "pull_quote": "Who does God say I am?",
+            "body_after_quote": "<p>When that question is answered &mdash; truly answered, not just recited but lived in the bones &mdash; something changes. The way you walk changes. The way you enter a room changes. The way you carry silence changes.</p><p>Maison Logos was built for that person.</p>"
+          }
+        },
+        "name": {
+          "type": "chapter",
+          "settings": {
+            "label": "II. THE NAME",
+            "heading": "Maison Logos. House of the Word.",
+            "body": "<p>Maison is the French word for house. Not a shop. Not a store. A house &mdash; a home, a heritage, an institution built to last.</p><p>Logos is the Greek word used in John 1:1. The Word. Not just language &mdash; the divine intelligence through which all things were made. Every mountain. Every ocean. Every human being, shaped by a Word spoken before time.</p><p>When God wanted to build something, He spoke first.</p><p>Maison Logos is a house built on that same principle. That what you carry on your body should reflect the Word that was spoken over your life before you were born.</p>",
+            "pull_quote": "You are not an accident.\nYou are not an afterthought.\nYou are a declaration.",
+            "body_after_quote": "<p>We are not a Christian brand. We are a brand built by believers, for people who have made peace with their identity and want to wear that peace without apology.</p>"
+          }
+        },
+        "standard": {
+          "type": "chapter",
+          "settings": {
+            "label": "III. THE STANDARD",
+            "heading": "Why quality is a form of worship.",
+            "body": "<p>We do not believe in cheap.</p><p>Not because we worship luxury. But because we believe the things we make should honour the Person we build them for.</p><p>When Solomon built the Temple, he did not use ordinary stone. He used the finest cedar from Lebanon. Gold on the altar. Skilled hands on every joint. Not to impress people &mdash; to honour God.</p><p>Every piece from Maison Logos is built with that same conviction. The weight of the fabric matters. The precision of the embroidery matters. The fit, the drape, the finish &mdash; all of it matters. Because you matter. And the God who made you is not a God of mediocrity.</p>",
+            "pull_quote": "Excellence is not arrogance.\nIt is gratitude made visible.",
+            "body_after_quote": "<p>You will feel the difference the moment you put it on. That is not an accident. It is a standard.</p>"
+          }
+        },
+        "person": {
+          "type": "chapter",
+          "settings": {
+            "label": "IV. THE PERSON",
+            "heading": "This was made for you.",
+            "body": "<p>Maison Logos is not for everyone.</p><p>It is for the person who has been through enough to know that identity is not built on titles, achievements, or the approval of other people. It is for the man who has stood in the fire and come out knowing whose he is. The woman who has stopped shrinking to make other people comfortable. The young person who has decided, quietly and without drama, that they are going to live from a different source.</p><p>It is for the person who does not need to explain themselves. Who does not need their clothing to start a conversation &mdash; but is not afraid when it does.</p>",
+            "pull_quote": "Worn by those who know who they are.",
+            "body_after_quote": "<p>If that is you, you are home.</p>"
+          }
+        },
+        "promise": {
+          "type": "chapter",
+          "settings": {
+            "label": "V. THE PROMISE",
+            "heading": "What we commit to you.",
+            "body": "<p>Every collection from Maison Logos is released with intention. Not to chase trends. Not to flood the market. One piece at a time. One story at a time. Built slowly, with care, for people who are not in a hurry to be anyone other than themselves.</p><p>We will never sacrifice quality for volume. We will never chase relevance at the expense of truth. We will build this house the way it was named &mdash; on the Word. Immovable. Unhurried. Eternal.</p><p>What God builds, lasts.</p><p>So does what is built in His name.</p>",
+            "pull_quote": "",
+            "body_after_quote": ""
+          }
+        }
+      },
+      "block_order": [
+        "question",
+        "name",
+        "standard",
+        "person",
+        "promise"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "accent_color": "#C9A84C",
+        "muted_color": "#8C7B6B",
+        "story_open_by_default": false,
+        "read_label": "Read the brand story",
+        "logo_width": 620,
+        "logo_text_size": 132,
+        "label_text_size": 12,
+        "cover_heading_size": 64,
+        "subtitle_size": 24,
+        "scripture_size": 48,
+        "chapter_heading_size": 42,
+        "body_text_size": 18,
+        "pull_quote_size": 40,
+        "closing_heading_size": 64,
+        "show_cover": true,
+        "brand_label": "MAISON LOGOS",
+        "heading": "House of the Word",
+        "subtitle": "The Brand Story",
+        "show_scripture": true,
+        "scripture_line_1": "In the beginning was the Word.",
+        "scripture_line_2": "And the Word was with God.",
+        "scripture_line_3": "And the Word was God.",
+        "scripture_reference": "John 1:1",
+        "show_closing": true,
+        "closing_color_scheme": "scheme-2",
+        "closing_heading": "Maison Logos",
+        "closing_subtitle": "House of the Word",
+        "domain": "maisonlogos.com",
+        "cta_label": "Shop Collection 001",
+        "cta_link": "shopify://collections/all"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
